@@ -162,3 +162,17 @@
 ### Experiment 014 — full-cycle observation scaling
 
 Extend the timescale test beyond the sub-cycle regime. Use observation windows defined directly as fractions of the independently estimated intrinsic period (for example 0.1, 0.25, 0.5, 0.75, 1.0, and 1.5 cycles), keep canonical EBID frozen, and repeat the hard joint-OOD transfer test. Reinstate the matched non-PCC benchmark only if PCC shows a stable transition. Primary target: determine whether EBID benefit becomes consistently positive once observations cover a substantial fraction or multiple of a PCC cycle.
+
+## Experiment 014 — full-cycle observation scaling — complete
+
+- [x] Keep canonical EBID frozen.
+- [x] Estimate intrinsic cycle periods independently from long noise-free trajectories.
+- [x] Observe `0.10`, `0.25`, `0.50`, `0.75`, `1.00`, and `1.50` cycles.
+- [x] Repeat hard held-out-canonical + unseen-noise prediction.
+- [x] Use ratio-local calibration as the primary sufficiency test.
+- [x] Report global cross-timescale calibration as a secondary analysis.
+- [x] Preserve the non-monotonic/borderline one-cycle result and avoid claiming a universal threshold.
+
+### Recommended Experiment 015 — transition-band replication
+
+Repeat the ratio-local test with independent seeds and denser coverage around approximately `0.4–1.2` cycles, using more samples and a pre-specified lower-variance readout. The primary question is whether the first reliable positive region remains near the substantial-cycle regime rather than being a small-sample artifact. Reinstate the non-PCC benchmark only after this transition reproduces.

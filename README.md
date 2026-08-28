@@ -256,3 +256,7 @@ observed. See `experiments/012_phase_aware_ebid/RESULTS.md`.
 ### Experiment 013 — observation-timescale sufficiency
 
 A dense 5–80 step sweep normalized by independently estimated PCC cycle periods did **not** reveal a stable EBID sufficiency threshold. The sampled windows covered only about 0.004–0.285 cycles; EBID was worse than the controlled baseline in most windows and only slightly positive in the 0.20–0.30 ratio bin. This narrows the next test to true half/full-cycle observations rather than further sub-cycle densification.
+
+### Experiment 014 — full-cycle observation scaling
+
+Full-cycle scaling changes the Experiment 013 result from “no threshold observed” to a more specific calibration-dependent pattern. When EBID is calibrated independently at each observation fraction, `0.10` and `0.25` cycles are not sufficient, `0.50` is uncertain, and `0.75` cycles is the first pre-specified ratio with a bootstrap-positive OOD improvement (`+33.5%` relative MAE reduction). `1.50` cycles is also reliably positive, while `1.00` cycle is positive but borderline. In contrast, a model calibrated jointly across all observation fractions improves at every ratio. The current interpretation is therefore **cycle-coverage-dependent local EBID identifiability**, not a universal critical fraction of one cycle.

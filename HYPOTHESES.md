@@ -180,3 +180,9 @@ not the frozen EBID definition or the observation-window effect itself.
 **Hypothesis.** Frozen canonical EBID should become reliably beneficial for hard joint-OOD regulator-difficulty prediction once the observation window spans a sufficient fraction of the intrinsic PCC cycle.
 
 **Experiment 013 status: not supported over the sampled sub-cycle range.** A dense 5–80 step sweep, corresponding to roughly 0.004–0.285 intrinsic cycles across tested strengths, did not show a stable monotonic onset. EBID was worse than the controlled baseline in most windows; the 0.20–0.30 cycle-ratio bin was only slightly positive. The experiment therefore does not establish a critical cycle fraction. The next test must extend to observation windows covering at least ~0.5–1.5 cycles.
+
+## H11 — Substantial cycle coverage stabilizes local EBID transfer
+
+**Hypothesis.** When canonical EBID is calibrated separately at each observation scale, hard joint-OOD transfer should become reliably beneficial only after the observation window covers a substantial fraction of the intrinsic PCC cycle.
+
+**Experiment 014 status: partial support.** Ratio-local fits are strongly harmful at `0.10` cycle, negative at `0.25`, weakly positive but uncertain at `0.50`, and first become bootstrap-positive at `0.75` cycle (`+33.5%` relative MAE reduction; 95% interval approximately `+6.6%` to `+52.4%`). `1.50` cycles is also reliably positive, while `1.00` cycle is positive but borderline. However, a single model calibrated across all observation ratios is positive even at `0.10` cycle. Thus the data support cycle-coverage-dependent **local identifiability/calibration**, not a universal physical threshold at `0.75` cycles.
