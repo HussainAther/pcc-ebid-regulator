@@ -59,8 +59,13 @@ will increase with environmental structural variety.
 **Current evidence.** Experiment 005 provides threshold-dependent support. At a
 mean-error criterion of `0.100`, one topology passes with one intervention
 channel, whereas two-to-four switching topologies require two channels across
-all tested dwell times. The result saturates at two channels, consistent with
-the geometry of a normalized three-component simplex.
+all tested dwell times. Experiment 006 strengthens the intervention-dimensionality
+part of H5: after exactly matching candidate-action cardinality and mean action
+norm, the best 2D regulators still reduce mean error by roughly 95–98% relative
+to the best 1D regulators across tested cells and three initial conditions.
+However, the 2D advantage is already comparably large with one topology, so the
+stronger claim that increasing structural variety monotonically *causes* the
+need for additional dimensionality is not supported by Experiment 006.
 
 **Falsification pressure.** The dimensionality effect disappears after matching
 action entropy/cardinality and intervention magnitude, fails across initial

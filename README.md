@@ -58,7 +58,10 @@ pcc-ebid-regulator/
 │   ├── 004_topology_switching/
 │   │   ├── README.md
 │   │   └── run.py
-│   └── 005_multichannel_variety/
+│   ├── 005_multichannel_variety/
+│   │   ├── README.md
+│   │   └── run.py
+│   └── 006_capacity_matched_variety/
 │       ├── README.md
 │       └── run.py
 ├── tests/
@@ -158,9 +161,17 @@ do **not** yet support the stronger PCC/EBID-regulator hypotheses.
   error from roughly `0.34–0.36` (best one-channel cases) to about `0.009–0.012`.
   A third channel gives little systematic benefit, consistent with the
   two-dimensional tangent space of the normalized three-component simplex.
+- **Experiment 006:** the two-channel advantage survives direct capacity matching.
+  One- and two-dimensional regulators receive the same candidate-action count
+  (`K = 5, 9, 17`) and exactly matched mean L2 repertoire norm, across three
+  initial conditions. The best 2D family still reduces mean error by roughly
+  `95–98%` relative to the best 1D family. However, the advantage is already
+  about this large with one topology, so the result strongly supports an
+  intervention-geometry effect but does not show that increasing topology count
+  monotonically creates the need for 2D control.
 
 These null/mixed/positive results are useful. They show that the deterministic symmetric
-system and scalar speed drift are not enough to yield a robust variety law. Experiment 005 now provides that stronger action-space test. The next priority is to capacity-match alternative variety measures (channel dimensionality, action-set cardinality, and action entropy), add repeated initial conditions/stochastic disturbances, and then test whether EBID predicts the observed regulatory-demand boundary out of sample.
+system and scalar speed drift are not enough to yield a robust variety law. Experiments 005–006 now provide the stronger action-space test and rule out raw action-count / mean-magnitude as the simplest explanation of the dimensionality effect. The next priority is to test stochastic perturbations and non-PCC compositional baselines, then operationalize canonical EBID and ask whether it predicts regulatory demand out of sample.
 
 See [`RESEARCH_STATUS.md`](RESEARCH_STATUS.md) and
 [`HYPOTHESES.md`](HYPOTHESES.md) for claim boundaries and falsification criteria.

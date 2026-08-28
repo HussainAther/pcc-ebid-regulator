@@ -38,8 +38,10 @@
 
 - [x] Replace scalar action-level count with multiple qualitatively distinct action channels.
 - [x] Give the regulator component-specific interventions on Pressure, Control, and Chaos.
-- [ ] Capacity-match action-space dimensionality, entropy, and cardinality as variety measures.
+- [x] Capacity-match action-set cardinality and mean intervention magnitude across 1D/2D repertoires.
+- [ ] Capacity-match action entropy / effective distinguishable outcomes, not only raw cardinality.
 - [x] Re-run topology switching with multi-channel regulators under common intervention semantics.
 - [x] Revisit the structural requisite-variety claim with explicit threshold sensitivity.
-- [ ] Repeat Experiment 005 across multiple initial conditions and stochastic perturbations.
+- [x] Repeat the capacity-matched dimensionality test across multiple initial conditions.
+- [ ] Repeat under stochastic state/process perturbations.
 - [ ] Compare against non-PCC compositional control benchmarks to test specificity.

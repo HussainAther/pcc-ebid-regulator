@@ -10,7 +10,7 @@ confound:
 2. **Internal model content / Good Regulator connection** — Experiment 002 holds
    action repertoire fixed while changing the regulator's predictive model.
 
-Four unit tests currently pass.
+The executable scaffold now includes six regulator experiments and capacity-matched vector interventions.
 
 ## Preliminary baseline results
 
@@ -144,3 +144,30 @@ canonical EBID predictor.
 
 Sixteen unit tests pass after adding vector-valued interventions and the
 multi-channel simulation harness.
+
+## Experiment 006 — capacity-matched intervention dimensionality
+
+Experiment 006 directly tests the main confound in Experiment 005. One- and
+two-dimensional regulator families are given the same number of candidate
+actions (`K = 5, 9, 17`) and exactly matched mean L2 action-set norm. The sweep
+also repeats each comparison across three initial compositions.
+
+The two-dimensional advantage survives decisively. Across all tested cells, the
+best 2D family reduces mean regulation error by approximately `95–98%` relative
+to the best 1D family. In four-topology switching at dwell 50 and K=9, for
+example, the aggregate error is `0.239551` for the best 1D family versus
+`0.005250` for the best 2D family, a 97.8% reduction.
+
+This rules out the simplest explanation that Experiment 005 was driven merely
+by giving multi-channel regulators more candidate actions or greater average
+intervention magnitude.
+
+The important counterpoint is that the 2D advantage is already comparably large
+in the one-topology condition (median relative reduction about 97.2%). Therefore
+Experiment 006 strongly supports an **intervention geometry / controllability**
+effect but does not show that increasing topology count monotonically causes a
+higher required intervention dimension. That distinction is now part of the
+claim boundary.
+
+Nineteen unit tests pass after adding matched-repertoire construction and the
+capacity-matched regulator path.

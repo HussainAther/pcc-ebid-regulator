@@ -44,3 +44,37 @@ def test_multichannel_topology_simulation_runs():
     )
     assert out["mean_error"] >= 0.0
     assert out["switches"] == 1.0
+
+from pcc_ebid_regulator.regulators import (
+    OracleFixedActionTopologyRegulator,
+    matched_directional_repertoire,
+    mean_repertoire_norm,
+)
+
+
+def test_matched_repertoires_match_cardinality_and_mean_norm():
+    one = matched_directional_repertoire((1,), cardinality=9, max_action=0.12)
+    target = mean_repertoire_norm(one)
+    two = matched_directional_repertoire(
+        (0, 2), cardinality=9, max_action=0.12, target_mean_norm=target
+    )
+    assert len(one) == len(two) == 9
+    assert np.isclose(mean_repertoire_norm(one), mean_repertoire_norm(two))
+
+
+def test_matched_two_channel_set_uses_both_channels():
+    actions = matched_directional_repertoire((0, 2), cardinality=9, max_action=0.12)
+    assert any(abs(action[0]) > 1e-12 for action in actions)
+    assert any(abs(action[2]) > 1e-12 for action in actions)
+    assert all(abs(action[1]) < 1e-12 for action in actions)
+
+
+def test_fixed_action_regulator_runs():
+    actions = matched_directional_repertoire((0, 2), cardinality=5, max_action=0.12)
+    regulator = OracleFixedActionTopologyRegulator(actions=actions)
+    out = simulate_multichannel_topology_regulation(
+        regulator,
+        topology_schedule=["canonical"] * 5 + ["reverse"] * 5,
+        burn_in=5,
+    )
+    assert out["mean_error"] >= 0.0

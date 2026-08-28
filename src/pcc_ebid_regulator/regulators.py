@@ -243,3 +243,102 @@ class OracleMultiChannelTopologyRegulator:
             )
             scored.append((regulation_error(predicted, target), action))
         return min(scored, key=lambda item: item[0])[1].copy()
+
+
+def matched_directional_repertoire(
+    channels: tuple[int, ...] | list[int],
+    *,
+    cardinality: int,
+    max_action: float = 0.12,
+    target_mean_norm: float | None = None,
+) -> list[np.ndarray]:
+    """Build a fixed-cardinality intervention set for capacity-matched tests.
+
+    One-channel sets use evenly spaced scalar levels from ``-max_action`` to
+    ``+max_action``. Two-channel sets contain one zero action plus evenly spaced
+    directions on a circle in the selected coordinate plane. If
+    ``target_mean_norm`` is given, the two-channel radius is chosen so the mean
+    L2 norm of the resulting repertoire matches that target.
+
+    The function intentionally supports one or two accessible channels only;
+    Experiment 006 asks whether access to a second qualitative intervention
+    direction helps when action-set cardinality and average magnitude are held
+    fixed.
+    """
+    channel_tuple = tuple(int(i) for i in channels)
+    if len(channel_tuple) not in (1, 2):
+        raise ValueError("matched directional repertoires require one or two channels")
+    if len(set(channel_tuple)) != len(channel_tuple):
+        raise ValueError("channels must be unique")
+    if any(i not in (0, 1, 2) for i in channel_tuple):
+        raise ValueError("channels must be drawn from 0=Pressure, 1=Control, 2=Chaos")
+    if cardinality < 3 or cardinality % 2 == 0:
+        raise ValueError("cardinality must be an odd integer >= 3")
+
+    if len(channel_tuple) == 1:
+        levels = np.linspace(-float(max_action), float(max_action), cardinality)
+        actions: list[np.ndarray] = []
+        for value in levels:
+            action = np.zeros(3, dtype=float)
+            action[channel_tuple[0]] = float(value)
+            actions.append(action)
+        return actions
+
+    nonzero_count = cardinality - 1
+    if target_mean_norm is None:
+        radius = float(max_action)
+    else:
+        radius = float(target_mean_norm) * cardinality / nonzero_count
+    actions = [np.zeros(3, dtype=float)]
+    for j in range(nonzero_count):
+        theta = 2.0 * np.pi * j / nonzero_count
+        action = np.zeros(3, dtype=float)
+        action[channel_tuple[0]] = radius * np.cos(theta)
+        action[channel_tuple[1]] = radius * np.sin(theta)
+        actions.append(action)
+    return actions
+
+
+def mean_repertoire_norm(actions: list[np.ndarray]) -> float:
+    """Mean L2 norm of an explicit vector-valued action repertoire."""
+    if not actions:
+        raise ValueError("actions must be non-empty")
+    return float(np.mean([np.linalg.norm(np.asarray(action, dtype=float)) for action in actions]))
+
+
+@dataclass
+class OracleFixedActionTopologyRegulator:
+    """Topology-aware greedy regulator over an explicit fixed action set."""
+
+    actions: list[np.ndarray]
+    model_strength: float = 1.5
+
+    def choose_topology(
+        self,
+        state: np.ndarray,
+        target: np.ndarray,
+        topology: str,
+    ) -> np.ndarray:
+        if not self.actions:
+            raise ValueError("actions must be non-empty")
+
+        # Vectorized one-step evaluation keeps capacity-matched sweeps tractable.
+        from .topology import topology_matrix
+
+        action_matrix = np.asarray(self.actions, dtype=float)
+        x = np.asarray(state, dtype=float)
+        target_arr = np.asarray(target, dtype=float)
+        logits = np.log(np.clip(x, 1e-12, None))[None, :] + action_matrix
+        logits -= np.max(logits, axis=1, keepdims=True)
+        controlled = np.exp(logits)
+        controlled /= np.sum(controlled, axis=1, keepdims=True)
+
+        matrix = topology_matrix(topology)
+        fitness = controlled @ matrix.T
+        mean_fitness = np.sum(controlled * fitness, axis=1)
+        dx = self.model_strength * controlled * (fitness - mean_fitness[:, None])
+        predicted = controlled + 0.02 * dx
+        predicted = np.clip(predicted, 1e-12, None)
+        predicted /= np.sum(predicted, axis=1, keepdims=True)
+        errors = np.linalg.norm(predicted - target_arr[None, :], axis=1)
+        return action_matrix[int(np.argmin(errors))].copy()
