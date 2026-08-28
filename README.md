@@ -55,12 +55,16 @@ pcc-ebid-regulator/
 │   ├── 003_dynamic_requisite_variety/
 │   │   ├── README.md
 │   │   └── run.py
-│   └── 004_topology_switching/
+│   ├── 004_topology_switching/
+│   │   ├── README.md
+│   │   └── run.py
+│   └── 005_multichannel_variety/
 │       ├── README.md
 │       └── run.py
 ├── tests/
 │   ├── test_drift.py
 │   ├── test_metrics.py
+│   ├── test_multichannel.py
 │   ├── test_regulators.py
 │   └── test_topology.py
 └── notes/
@@ -146,9 +150,17 @@ do **not** yet support the stronger PCC/EBID-regulator hypotheses.
   active-topology knowledge does not consistently beat a fixed misspecified
   predictive model, so the stronger Good-Regulator interpretation remains
   unsupported.
+- **Experiment 005:** redefining regulator variety as access to qualitatively
+  distinct component-specific intervention channels produces the clearest
+  Ashby-shaped result so far. At mean-error criterion `0.100`, one topology can
+  be regulated with one channel, while two-to-four switching topologies require
+  two channels at every tested dwell. Two channels reduce four-topology mean
+  error from roughly `0.34–0.36` (best one-channel cases) to about `0.009–0.012`.
+  A third channel gives little systematic benefit, consistent with the
+  two-dimensional tangent space of the normalized three-component simplex.
 
-These null/mixed results are useful. They show that the deterministic symmetric
-system and scalar speed drift are not enough to yield a robust variety law. The next stronger test is to improve the *action-space definition of variety*: introduce qualitatively distinct intervention channels on Pressure, Control, and Chaos, then repeat topology switching. Component-specific coupling drift, exogenous disturbance classes, and explicit cycle phase remain follow-on tests.
+These null/mixed/positive results are useful. They show that the deterministic symmetric
+system and scalar speed drift are not enough to yield a robust variety law. Experiment 005 now provides that stronger action-space test. The next priority is to capacity-match alternative variety measures (channel dimensionality, action-set cardinality, and action entropy), add repeated initial conditions/stochastic disturbances, and then test whether EBID predicts the observed regulatory-demand boundary out of sample.
 
 See [`RESEARCH_STATUS.md`](RESEARCH_STATUS.md) and
 [`HYPOTHESES.md`](HYPOTHESES.md) for claim boundaries and falsification criteria.

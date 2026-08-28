@@ -36,8 +36,10 @@
 
 ## Phase 5 — Improve the meaning of regulator variety
 
-- [ ] Replace scalar action-level count with multiple qualitatively distinct action channels.
-- [ ] Give the regulator independent interventions on Pressure, Control, and Chaos.
-- [ ] Compare action-space dimensionality, entropy, and cardinality as variety measures.
-- [ ] Re-run topology switching with capacity-matched multi-channel regulators.
-- [ ] Only then revisit a structural requisite-variety claim.
+- [x] Replace scalar action-level count with multiple qualitatively distinct action channels.
+- [x] Give the regulator component-specific interventions on Pressure, Control, and Chaos.
+- [ ] Capacity-match action-space dimensionality, entropy, and cardinality as variety measures.
+- [x] Re-run topology switching with multi-channel regulators under common intervention semantics.
+- [x] Revisit the structural requisite-variety claim with explicit threshold sensitivity.
+- [ ] Repeat Experiment 005 across multiple initial conditions and stochastic perturbations.
+- [ ] Compare against non-PCC compositional control benchmarks to test specificity.

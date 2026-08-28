@@ -112,3 +112,35 @@ structure helps relative to simple model-free baselines). The stronger claim
 that correct PCC topology representation is required remains unsupported.
 
 Eleven unit tests pass after adding topology dynamics and switching support.
+
+## Experiment 005 — multi-channel regulator variety
+
+Experiment 005 replaces the scalar action-level definition of regulator variety
+with component-specific intervention access on Pressure, Control, and Chaos.
+The controller retains oracle knowledge of the active topology so that model
+adequacy is held optimistic and the main variable is intervention access.
+
+The result is the clearest Ashby-shaped pattern in the repository so far. At a
+mean-error criterion of `0.100`, a one-topology environment can be regulated by
+a one-channel controller, while environments switching among two, three, or
+four topologies require at least two intervention channels for dwell values 20,
+50, and 100. At stricter criteria, two channels are already required even in the
+one-topology case, so the threshold shift is explicitly performance-dependent.
+
+Within the common multi-channel intervention semantics, the performance jump is
+large: in four-topology switching the best one-channel mean error is roughly
+`0.34–0.36`, whereas the best two-channel controllers achieve approximately
+`0.009–0.012`. Three-channel access offers little systematic gain over two
+channels. This saturation is consistent with the geometry of a normalized
+three-component simplex, whose relative-state tangent space is two-dimensional.
+
+A reduced action-magnitude sensitivity sweep (`0.03`, `0.06`, `0.09`, `0.12`)
+preserves the qualitative one-channel versus two-channel separation.
+
+This is **threshold-dependent computational support**, not a theorem. The next
+critical controls are action-capacity matching, multiple initial conditions,
+stochastic disturbances, non-PCC compositional baselines, and an operational
+canonical EBID predictor.
+
+Sixteen unit tests pass after adding vector-valued interventions and the
+multi-channel simulation harness.

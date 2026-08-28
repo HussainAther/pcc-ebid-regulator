@@ -46,3 +46,23 @@ compute, memory, or action capacity.
 information not recoverable from a coarse state summary alone.
 
 This remains a planned experiment. It should not be stated as a result.
+
+
+## H5 — Structural intervention dimensionality
+
+**Hypothesis.** When the environment can switch among qualitatively distinct PCC
+interaction structures, a regulator with access to multiple independent
+intervention directions will outperform one restricted to a single component,
+and at some fixed performance criteria the minimum intervention dimensionality
+will increase with environmental structural variety.
+
+**Current evidence.** Experiment 005 provides threshold-dependent support. At a
+mean-error criterion of `0.100`, one topology passes with one intervention
+channel, whereas two-to-four switching topologies require two channels across
+all tested dwell times. The result saturates at two channels, consistent with
+the geometry of a normalized three-component simplex.
+
+**Falsification pressure.** The dimensionality effect disappears after matching
+action entropy/cardinality and intervention magnitude, fails across initial
+conditions or stochastic perturbations, or is reproduced entirely by a simpler
+non-PCC control benchmark.

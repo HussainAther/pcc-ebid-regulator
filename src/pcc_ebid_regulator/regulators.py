@@ -161,3 +161,85 @@ class FixedTopologyRegulator:
             )
             scored.append((regulation_error(predicted, target), float(action)))
         return min(scored, key=lambda item: item[0])[1]
+
+
+def apply_multichannel_action(state: np.ndarray, action: np.ndarray) -> np.ndarray:
+    """Apply component-specific multiplicative/logit interventions on the simplex.
+
+    ``action`` is ordered [Pressure, Control, Chaos]. Positive values increase
+    a component's relative weight and negative values decrease it. Normalizing
+    after exponentiation preserves positivity and total mass. Because the state
+    is compositional, a common offset to all three action components has no
+    effect; this makes the effective intervention space at most two-dimensional.
+    """
+    x = np.asarray(state, dtype=float)
+    u = np.asarray(action, dtype=float)
+    if x.shape != (3,) or u.shape != (3,):
+        raise ValueError("state and action must both have shape (3,)")
+    if not np.all(np.isfinite(u)):
+        raise ValueError("action must contain only finite values")
+    logits = np.log(np.clip(x, 1e-12, None)) + u
+    logits -= np.max(logits)
+    controlled = np.exp(logits)
+    return controlled / controlled.sum()
+
+
+def multichannel_repertoire(
+    channels: tuple[int, ...] | list[int],
+    *,
+    max_action: float = 0.12,
+) -> list[np.ndarray]:
+    """Return ternary {-a, 0, +a} interventions on accessible channels.
+
+    This defines regulator *channel dimensionality* separately from scalar
+    resolution. With k accessible channels the raw repertoire contains 3**k
+    candidate action vectors (some are compositionally equivalent when k=3).
+    """
+    from itertools import product
+
+    channel_tuple = tuple(int(i) for i in channels)
+    if not channel_tuple:
+        raise ValueError("at least one intervention channel is required")
+    if len(set(channel_tuple)) != len(channel_tuple):
+        raise ValueError("channels must be unique")
+    if any(i not in (0, 1, 2) for i in channel_tuple):
+        raise ValueError("channels must be drawn from 0=Pressure, 1=Control, 2=Chaos")
+
+    levels = (-float(max_action), 0.0, float(max_action))
+    actions: list[np.ndarray] = []
+    for values in product(levels, repeat=len(channel_tuple)):
+        action = np.zeros(3, dtype=float)
+        for index, value in zip(channel_tuple, values):
+            action[index] = value
+        actions.append(action)
+    return actions
+
+
+@dataclass
+class OracleMultiChannelTopologyRegulator:
+    """Greedy topology-aware regulator with configurable intervention channels.
+
+    Experiment 005 uses this optimistic oracle to isolate the effect of
+    *qualitatively different intervention access* from structural-model error.
+    """
+
+    channels: tuple[int, ...]
+    model_strength: float = 1.5
+    max_action: float = 0.12
+
+    def choose_topology(
+        self,
+        state: np.ndarray,
+        target: np.ndarray,
+        topology: str,
+    ) -> np.ndarray:
+        scored: list[tuple[float, np.ndarray]] = []
+        for action in multichannel_repertoire(self.channels, max_action=self.max_action):
+            controlled = apply_multichannel_action(state, action)
+            predicted = step(
+                controlled,
+                strength=self.model_strength,
+                topology=topology,
+            )
+            scored.append((regulation_error(predicted, target), action))
+        return min(scored, key=lambda item: item[0])[1].copy()
