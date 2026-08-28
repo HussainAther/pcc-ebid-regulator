@@ -345,3 +345,7 @@ The direct-control result should now be decomposed prospectively rather than exp
 4. + canonical EBID rate/deficit-rate terms.
 
 Use the same direct control-benefit target and leave-one-class-out / leave-one-family-out protocols. Add nonlinear geometry controls so endpoint entropy cannot win merely by providing a convenient nonlinear basis for composition. The primary question is whether *history* or *rates* add anything beyond an equivalently expressive state representation.
+
+## Experiment 027 — matched-history sufficiency / history scrambling
+
+Directly test whether the residual Experiment-026 temporal signal depends on *ordered trajectory history* rather than summary statistics alone. Keep endpoint state and endpoint entropy fixed while comparing true histories with pre-specified history controls (time reversal, within-window permutation where admissible, and matched initial/mean entropy summaries). Primary question: does preserving temporal ordering improve direct control-benefit prediction beyond the same entropy marginals?

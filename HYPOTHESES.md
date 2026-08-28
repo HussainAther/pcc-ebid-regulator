@@ -271,3 +271,9 @@ The repository therefore does **not** support a reproducible privileged cycle fr
 **Ablation.** Most of this improvement is supplied by entropy level/history features (initial, mean, and endpoint entropy): these alone reduce pooled MAE by **26.6%**. The remaining entropy-rate/deficit-rate features add only about **3.0%** additional pooled MAE reduction beyond those entropy summaries; for PCC the rate-only increment is about `+1.4%`.
 
 **Claim boundary.** Experiment 025 supports a direct, cross-class relationship between entropy history and standardized future controllability/control benefit. It does **not** show that EBID's rate terms are the main source of that relationship, nor that the effect is specific to PCC. The strongest current interpretation is that entropy-level trajectory information is a transferable predictor of how much an optimistic regulator can improve future error in this matched simplex panel.
+
+## H19 — entropy history beyond exact current-state entropy
+
+After current state is represented nonlinearly and its exact endpoint entropy is included, frozen trajectory entropy history (`H_initial`, `H_mean`) will retain incremental predictive value for the direct control-benefit target. Canonical entropy-rate terms are tested only after this history increment.
+
+**Experiment 026 status:** partially supported. Pooled leave-one-dynamical-class-out MAE improves by ~4.3% from entropy history and another ~2.4% from rate terms, with positive pooled bootstrap intervals. PCC shows ~7.3% history gain and ~2.5% rate gain. However, the effect is not mechanism-universal: neutral diffusion is harmed by entropy history. The large Experiment-025 effect is therefore substantially attributable to endpoint-entropy representation rather than purely temporal EBID information.

@@ -405,3 +405,11 @@ Experiment 025 changes the target from "when does EBID help a predictor?" to the
 Against a strong baseline containing endpoint geometry, the matched quadratic trajectory family, and generic activity history, the full frozen canonical EBID feature family reduces leave-one-dynamical-class-out MAE by **28.8% pooled**. The gain is positive for all five unseen classes (roughly `+19.5%` to `+38.8%`), and the pooled EBID model reaches `R² ≈ 0.86`. Known-class leave-one-family-out transfer improves by **27.4%**.
 
 The crucial ablation is that initial/mean/endpoint entropy already accounts for **26.6%** pooled improvement. The remaining entropy-rate/deficit-rate features add only about **3.0%** beyond those entropy summaries, and only about `1.4%` for PCC. Thus the direct positive result is best interpreted as a transferable **entropy-history → control-benefit** relationship, not evidence that EBID rate terms uniquely encode regulator demand.
+
+## Experiment 026 — entropy-history decomposition
+
+Experiment 026 reuses the direct control-benefit dataset from Experiment 025 and strengthens the current-state baseline. Because endpoint entropy is exactly determined by the current simplex state, a primary sanity track includes the exact endpoint-entropy transform in the state baseline before any temporal features are added.
+
+Under leave-one-dynamical-class-out evaluation, `H_initial` and `H_mean` then add ~4.3% pooled MAE reduction, and the remaining canonical rate / deficit-rate terms add ~2.4% more. PCC shows a stronger ~7.3% history increment plus ~2.5% rate increment. Neutral diffusion is a counterexample, with entropy history worsening transfer by ~10.6%.
+
+**Claim boundary:** Experiment 025's large entropy-family gain should not be described as a large temporal EBID effect. A substantial fraction is explained by explicit nonlinear endpoint-entropy representation. Modest temporal information survives after that control, but it is mechanism-dependent rather than universal.

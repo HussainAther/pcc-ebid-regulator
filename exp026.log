@@ -1,0 +1,9 @@
+EXPERIMENT 026: ENTROPY-HISTORY DECOMPOSITION
+pcc                      history=  +7.3% rate=  +2.5% full=  +9.6% R2=+0.803
+oscillatory_benchmark    history=  +3.7% rate=  -1.5% full=  +2.3% R2=+0.692
+damped_oscillator        history=  +0.1% rate=  +5.2% full=  +5.3% R2=+0.795
+directional_benchmark    history=  +9.2% rate=  +3.8% full= +12.7% R2=-0.531
+neutral_diffusion        history= -10.6% rate=  +0.2% full= -10.4% R2=+0.843
+ALL                      history=  +4.3% rate=  +2.4% full=  +6.6% R2=+0.829
+Family CV {'protocol': 'leave_one_family_out_exact_entropy_state', 'n_test': 2400, 'm0_mae': 0.07009895164421272, 'm2_mae': 0.06789090586532179, 'm3_mae': 0.0654913208626063, 'history_gain': 0.03149898432287358, 'rate_increment': 0.03534471918044007, 'full_gain': 0.06573038074795261, 'm0_r2': 0.8968238316803516, 'm3_r2': 0.9089935671264369}
+Bootstrap [{'comparison': 'm0_to_m2', 'mean': 0.04295416292581774, 'lo95': 0.03173782837313351, 'hi95': 0.053045417409576655}, {'comparison': 'm2_to_m3', 'mean': 0.023940281183337325, 'lo95': 0.017258716961254382, 'hi95': 0.030258367336872257}]
