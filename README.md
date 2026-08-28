@@ -286,3 +286,7 @@ Experiment 019 asks whether the Experiment-018 PCC enrichment survives once the 
 It **falsifies the broad PCC-specific interpretation** of Experiment 018. At `0.60`, the oscillatory control gains `+49.3%` relative MAE reduction versus PCC's `+15.3%`; the paired PCC-minus-control margin is `-34.0` percentage points with its bootstrap interval entirely below zero. At `1.00`, the oscillatory control (`+22.8%`) essentially matches PCC (`+23.6%`), with a specificity interval crossing zero.
 
 The current evidence therefore supports canonical EBID as a useful dynamical-history descriptor for some regulator-prediction tasks, but not as uniquely PCC-specific. Generic oscillatory compositional dynamics can reproduce or exceed the stabilized PCC signal. See `experiments/019_oscillatory_specificity/RESULTS.md`.
+
+### Experiment 020: dynamical-class panel
+
+A five-class specificity panel shows that EBID regulator-demand value is not uniquely PCC-specific and is not explained by oscillation alone. At 0.60 PCC-reference cycles the strongest gains occur in persistent and damped oscillators; at 1.00 cycle PCC and persistent oscillation remain positive, neutral diffusion is strongly positive, damped oscillation is mixed, and directional flow is strongly harmful. See `experiments/020_dynamical_class_panel/RESULTS.md`.

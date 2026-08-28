@@ -243,3 +243,7 @@ Construct a matched three-component **oscillatory but non-PCC** control (for exa
 ### Recommended Experiment 020 — matched dynamical-class panel
 
 Replace one-control-at-a-time specificity with a small pre-specified panel spanning distinct mechanisms: canonical PCC, externally forced oscillator, damped oscillator, directional compositional flow, and neutral/noisy simplex dynamics. Use the same cross-family protocol and frozen EBID features. Primary question: which dynamical properties (oscillation, damping, endogenous non-transitivity, persistence, entropy cycling) explain EBID's incremental regulator-demand value? This should be analyzed as a class-level comparison rather than another search for a single favorable comparator.
+
+## Experiment 021 — matched trajectory-statistics panel
+
+Replace coarse class labels with continuous, pre-specified trajectory descriptors measured before the prediction horizon: entropy excursion, entropy-rate variance, state displacement, path length, return/persistence, spectral concentration, and net directional drift. Test which descriptors predict the *incremental* EBID gain across class × family × scale while keeping EBID itself frozen. This is the next step before proposing a general dynamical condition for EBID usefulness.

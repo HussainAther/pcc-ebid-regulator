@@ -224,3 +224,9 @@ The repository therefore does **not** support a reproducible privileged cycle fr
 **Experiment 019 status: not supported.** At `0.60`, the oscillatory non-PCC control gains `+49.3%` relative MAE reduction versus `+15.3%` for PCC, producing a paired PCC-minus-control margin of `-34.0` percentage points with a bootstrap interval entirely below zero (`-46.3` to `-21.8` pp). At `1.00`, PCC gains `+23.6%` and the oscillatory control gains `+22.8%`; the `+0.8` pp margin is indistinguishable from zero (`-12.4` to `+13.4` pp).
 
 **Claim boundary.** Experiment 018 demonstrated enrichment versus a non-oscillatory directional benchmark, but Experiment 019 shows that the enrichment does not survive a matched oscillatory control. Current evidence therefore supports EBID as a useful dynamical-history predictor in some regulator tasks, but not as uniquely PCC-specific. The next specificity question should identify which dynamical-class properties — oscillation, damping, non-transitivity, exogenous versus endogenous cycling, etc. — govern EBID's incremental value.
+
+## H17 — EBID benefit is organized by broad dynamical class
+
+**Question.** Is the stabilized EBID regulator-demand benefit specific to PCC, generic to oscillators, or associated with a broader dynamical property?
+
+**Experiment 020 result:** no single coarse class property explains the panel. Persistent and damped oscillators are strongly positive at 0.60 cycles, but the damped oscillator loses the benefit at 1.00; neutral diffusion is strongly positive at 1.00 despite having no deterministic oscillation; directional flow is harmful. Therefore "PCC-specific" and "oscillation-specific" versions of H17 are not supported. A broader trajectory-history explanation remains open.

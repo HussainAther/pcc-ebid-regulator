@@ -368,3 +368,7 @@ An externally forced three-component oscillator was matched to PCC reference per
 At `0.60`, frozen canonical EBID reduces held-out-family prediction MAE by `49.3%` in the oscillatory control (8/8 families positive), substantially exceeding the PCC gain of `15.3%`. The paired PCC-minus-control margin is `-34.0` percentage points with a bootstrap interval entirely below zero. At `1.00`, the control gain is `22.8%` (7/8 positive), essentially matching PCC's `23.6%`; the paired margin is `+0.8` pp with an interval crossing zero.
 
 **Current conclusion:** the strong Experiment-018 separation does not generalize from a directional control to an oscillatory one. EBID's stabilized regulator-demand signal is therefore not currently PCC-specific; generic cyclic dynamics can reproduce or exceed it. This is a major narrowing result and should supersede any broad interpretation of Experiment 018 as evidence for uniqueness to PCC.
+
+### Experiment 020 — dynamical-class panel
+
+A five-class panel (PCC, persistent oscillator, damped oscillator, directional flow, neutral diffusion) shows that canonical EBID's incremental regulator-demand value is neither unique to PCC nor reducible to the presence of oscillation. At 0.60 PCC-reference cycles, mean EBID gains are +15.3%, +49.3%, +57.7%, -5.7%, and +12.6%, respectively. At 1.00 cycle they are +23.6%, +22.8%, -7.8%, -203.5%, and +36.0%. This supports a broader trajectory-history dependence but does not identify one causal dynamical property.
