@@ -1,12 +1,38 @@
 # Experiment 002: Model Content and Regulation
 
-Compare matched-capacity regulators with different internal representations:
+## Question
 
-1. current state only,
-2. state + short history,
-3. state + known PCC interaction topology,
-4. state + topology + estimated cycle phase.
+When action capacity is held fixed, does a regulator with a better model of the
+PCC dynamics achieve lower long-run regulation error?
 
-Primary outcome: long-run regulation error under cyclic PCC dynamics.
+## Controllers
 
-The important control is parameter/memory capacity: a topology-aware regulator should not win merely because it was given a larger model.
+All controllers receive the same nine-action repertoire.
+
+1. `state_only` — reacts only to present Control deviation.
+2. `short_history` — extrapolates a one-step trend from recent state history.
+3. `correct_pcc_model` — evaluates actions through the true PCC transition model.
+4. `weak_pcc_model` — uses the right topology but underestimates coupling strength.
+5. `strong_pcc_model` — uses the right topology but overestimates coupling strength.
+
+This is deliberately not yet a full test of the Good Regulator Theorem. It is a
+model-content ablation asking whether correct dynamical representation matters
+in the toy PCC regime.
+
+## Prediction
+
+If PCC dynamics matter to regulation, the correctly specified predictive model
+should outperform state-only and misspecified alternatives increasingly as the
+true coupling strength rises.
+
+## Falsification signal
+
+The proposed bridge is weakened if model content has no reproducible effect, or
+if a simpler matched-capacity controller performs as well as the PCC-aware
+model across cyclic regimes.
+
+Run:
+
+```bash
+python experiments/002_good_regulator/run.py
+```

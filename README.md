@@ -103,3 +103,23 @@ That separation is intentional.
 ## Relationship to the PCC repository
 
 This project is a focused satellite of the broader PCC/EBID research program. It isolates regulator-theorem questions so they can be developed and falsified without expanding the scope of the main PCC repository.
+
+## Preliminary baseline findings
+
+The first deterministic baselines are intentionally retained even though they
+do **not** yet support the stronger PCC/EBID-regulator hypotheses.
+
+- **Experiment 001:** with the current toy dynamics and an error threshold of
+  `0.08`, regulator variety `3` is sufficient at every tested coupling strength
+  (`0.5`–`3.0`), while variety `1` fails. Increasing coupling therefore does not
+  currently increase the observed threshold.
+- **Experiment 002:** the correctly specified one-step PCC predictive model does
+  not consistently outperform simpler state-only/history controllers.
+
+These null/mixed results are useful. They show that the deterministic symmetric
+system is too easy to regulate near equilibrium and motivate the next tests:
+stochastic perturbation, parameter drift, topology ablation, and explicit cycle
+phase.
+
+See [`RESEARCH_STATUS.md`](RESEARCH_STATUS.md) and
+[`HYPOTHESES.md`](HYPOTHESES.md) for claim boundaries and falsification criteria.

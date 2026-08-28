@@ -1,34 +1,74 @@
 # Research Status
 
-## Status
+## Current status: baseline computational scaffold
 
-Exploratory / hypothesis-generating.
+The repository now cleanly separates two questions that were previously easy to
+confound:
 
-## Established inputs
+1. **Regulatory capacity / requisite variety** — Experiment 001 varies only the
+   discrete action repertoire of a fixed reactive regulator.
+2. **Internal model content / Good Regulator connection** — Experiment 002 holds
+   action repertoire fixed while changing the regulator's predictive model.
 
-- Ashby's Law of Requisite Variety.
-- The Conant-Ashby Good Regulator Theorem.
-- The Internal Model Principle in control theory.
+Four unit tests currently pass.
 
-## Proposed connections under test
+## Preliminary baseline results
 
-1. PCC-style endogenous cyclic instability can make required regulator capacity state- or trajectory-dependent.
-2. EBID-like instability measurements may predict changes in empirical requisite variety.
-3. In non-transitive regimes, regulator model adequacy may depend on representing interaction topology and phase, not only instantaneous state.
+### Experiment 001 — deterministic requisite-variety sweep
 
-## Not claimed
+Using the current three-state deterministic PCC toy dynamics and an error
+criterion of 0.08, a three-action repertoire was sufficient at every tested
+coupling strength from 0.5 through 3.0. A one-action (no-control) repertoire
+failed throughout.
 
-- PCC supersedes the Good Regulator Theorem.
-- EBID is equivalent to Ashby's variety.
-- Every regulator or adaptive system is PCC.
-- A monotonic instability-to-variety relation has already been established.
+This baseline therefore **does not support** the stronger hypothesis that
+increasing PCC coupling by itself raises the empirical minimum regulator
+variety. It also shows that more finely discretized action repertoires do not
+monotonically improve the present reactive controller.
 
-## Immediate milestones
+Interpretation: the current deterministic system can be driven near the
+symmetric equilibrium and then requires little sustained intervention. It is
+therefore too forgiving to establish a trajectory-dependent requisite-variety
+result.
 
-- [x] Define theory map.
-- [x] Add minimal PCC dynamics and entropy metrics.
-- [x] Add initial requisite-variety experiment skeleton.
-- [ ] Calibrate Experiment 001 and freeze a baseline result.
-- [ ] Add topology-aware vs state-only regulator comparison.
-- [ ] Define explicit falsification criteria.
-- [ ] Add citations and precise theorem statements from primary sources.
+### Experiment 002 — model-content ablation
+
+The correctly specified one-step PCC model did **not** consistently outperform
+state-only, short-history, or parameter-misspecified alternatives at the tested
+coupling strengths.
+
+This baseline therefore **does not support** a Good-Regulator-style claim that
+explicit PCC model content is necessary in this toy regime.
+
+Interpretation: the task is currently simple enough that richer model content
+provides little advantage; moreover, a one-step greedy predictor is not a fair
+proxy for the deeper informational claims of the Good Regulator Theorem.
+
+## What can be claimed now
+
+- The repo has executable, falsifiable versions of the first two questions.
+- Capacity and model-content variables are now experimentally separated.
+- The simplest deterministic implementation produces informative null results.
+
+## What cannot be claimed now
+
+- That EBID predicts requisite regulatory variety.
+- That PCC coupling causes requisite variety to increase.
+- That a PCC-aware controller is required by the Good Regulator Theorem.
+- That cycle phase is necessary regulator information.
+- That PCC/EBID extends, generalizes, or supersedes any established theorem.
+
+## Next decisive tests
+
+The next experiments should create regimes where regulation remains genuinely
+nontrivial over time:
+
+- stochastic perturbations,
+- drifting coupling parameters,
+- nonstationary targets,
+- topology changes or edge failures,
+- multiple initial conditions,
+- threshold-sensitivity analysis,
+- capacity-matched topology and phase ablations.
+
+Null results should remain in the repository as part of the evidence trail.
