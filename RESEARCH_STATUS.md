@@ -171,3 +171,28 @@ claim boundary.
 
 Nineteen unit tests pass after adding matched-repertoire construction and the
 capacity-matched regulator path.
+
+## Experiment 007 — non-PCC compositional specificity benchmark
+
+Experiment 007 tests whether Experiment 006's large 2D intervention advantage
+is specific to PCC/non-transitive dynamics. The control system uses the same
+three-component simplex, target, vector intervention semantics, matched action
+cardinality (`K = 5, 9, 17`), matched mean L2 repertoire norm, initial
+conditions, and dwell times. The PCC interaction matrix is replaced by fixed
+exogenous directional-selection regimes, so there is no endogenous cyclic or
+pairwise interaction.
+
+The benchmark reproduces the 2D advantage almost exactly. Its median relative
+error reduction is `97.2%` (range `93.4–98.5%`). Across the directly matched
+cells, the median difference between PCC and benchmark relative reductions is
+about `-0.4` percentage points. In four-regime switching, benchmark reductions
+of about `97.0–98.5%` closely track PCC's `96.6–98.3%`.
+
+This is a **specificity failure** for the strong interpretation of H5. The large
+1D-to-2D advantage should currently be attributed primarily to generic
+compositional controllability / simplex geometry, not to PCC structure itself.
+The intervention-dimensionality phenomenon remains computationally robust, but
+it is not evidence by itself for a PCC-specific extension of requisite variety.
+
+Twenty-three unit tests pass after adding the non-PCC benchmark dynamics,
+regime-aware benchmark regulator, and benchmark simulation path.

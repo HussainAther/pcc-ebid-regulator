@@ -45,7 +45,8 @@ pcc-ebid-regulator/
 │   ├── experiments.py
 │   ├── metrics.py
 │   ├── regulators.py
-│   └── topology.py
+│   ├── topology.py
+│   └── benchmark.py
 ├── experiments/
 │   ├── 001_requisite_variety/
 │   │   └── run.py
@@ -61,7 +62,10 @@ pcc-ebid-regulator/
 │   ├── 005_multichannel_variety/
 │   │   ├── README.md
 │   │   └── run.py
-│   └── 006_capacity_matched_variety/
+│   ├── 006_capacity_matched_variety/
+│   │   ├── README.md
+│   │   └── run.py
+│   └── 007_nonpcc_benchmark/
 │       ├── README.md
 │       └── run.py
 ├── tests/
@@ -69,7 +73,8 @@ pcc-ebid-regulator/
 │   ├── test_metrics.py
 │   ├── test_multichannel.py
 │   ├── test_regulators.py
-│   └── test_topology.py
+│   ├── test_topology.py
+│   └── test_benchmark.py
 └── notes/
     └── legacy_grt_comparison.md
 ```
@@ -169,9 +174,15 @@ do **not** yet support the stronger PCC/EBID-regulator hypotheses.
   about this large with one topology, so the result strongly supports an
   intervention-geometry effect but does not show that increasing topology count
   monotonically creates the need for 2D control.
+- **Experiment 007:** a non-PCC compositional benchmark reproduces the
+  capacity-matched 2D advantage almost exactly. Its median relative error
+  reduction is `97.2%` (range `93.4–98.5%`), and the median PCC-minus-benchmark
+  difference is about `-0.4` percentage points. This is a specificity failure
+  for the strong PCC interpretation: the large 1D-to-2D jump is currently best
+  explained by generic simplex controllability geometry, not PCC structure.
 
 These null/mixed/positive results are useful. They show that the deterministic symmetric
-system and scalar speed drift are not enough to yield a robust variety law. Experiments 005–006 now provide the stronger action-space test and rule out raw action-count / mean-magnitude as the simplest explanation of the dimensionality effect. The next priority is to test stochastic perturbations and non-PCC compositional baselines, then operationalize canonical EBID and ask whether it predicts regulatory demand out of sample.
+system and scalar speed drift are not enough to yield a robust variety law. Experiments 005–006 establish a robust action-space dimensionality effect and rule out raw action-count / mean-magnitude as the simplest explanation. Experiment 007 then shows that this effect is reproduced by a non-PCC compositional baseline, sharply narrowing its interpretation to generic controllability geometry. The next priority is to add stochastic matched PCC/baseline tests and operationalize canonical EBID to ask whether any PCC-specific instability statistic predicts regulator demand beyond that geometric baseline.
 
 See [`RESEARCH_STATUS.md`](RESEARCH_STATUS.md) and
 [`HYPOTHESES.md`](HYPOTHESES.md) for claim boundaries and falsification criteria.

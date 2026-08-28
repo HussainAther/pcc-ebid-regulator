@@ -342,3 +342,39 @@ class OracleFixedActionTopologyRegulator:
         predicted /= np.sum(predicted, axis=1, keepdims=True)
         errors = np.linalg.norm(predicted - target_arr[None, :], axis=1)
         return action_matrix[int(np.argmin(errors))].copy()
+
+
+@dataclass
+class OracleFixedActionBenchmarkRegulator:
+    """Regime-aware greedy regulator for the non-PCC benchmark."""
+
+    actions: list[np.ndarray]
+    model_strength: float = 1.5
+
+    def choose_regime(
+        self,
+        state: np.ndarray,
+        target: np.ndarray,
+        regime: str,
+    ) -> np.ndarray:
+        if not self.actions:
+            raise ValueError("actions must be non-empty")
+
+        from .benchmark import benchmark_bias
+
+        action_matrix = np.asarray(self.actions, dtype=float)
+        x = np.asarray(state, dtype=float)
+        target_arr = np.asarray(target, dtype=float)
+        logits = np.log(np.clip(x, 1e-12, None))[None, :] + action_matrix
+        logits -= np.max(logits, axis=1, keepdims=True)
+        controlled = np.exp(logits)
+        controlled /= np.sum(controlled, axis=1, keepdims=True)
+
+        bias = benchmark_bias(regime)
+        mean_bias = controlled @ bias
+        dx = self.model_strength * controlled * (bias[None, :] - mean_bias[:, None])
+        predicted = controlled + 0.02 * dx
+        predicted = np.clip(predicted, 1e-12, None)
+        predicted /= np.sum(predicted, axis=1, keepdims=True)
+        errors = np.linalg.norm(predicted - target_arr[None, :], axis=1)
+        return action_matrix[int(np.argmin(errors))].copy()

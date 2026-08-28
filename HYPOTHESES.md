@@ -56,18 +56,27 @@ intervention directions will outperform one restricted to a single component,
 and at some fixed performance criteria the minimum intervention dimensionality
 will increase with environmental structural variety.
 
-**Current evidence.** Experiment 005 provides threshold-dependent support. At a
-mean-error criterion of `0.100`, one topology passes with one intervention
-channel, whereas two-to-four switching topologies require two channels across
-all tested dwell times. Experiment 006 strengthens the intervention-dimensionality
-part of H5: after exactly matching candidate-action cardinality and mean action
-norm, the best 2D regulators still reduce mean error by roughly 95–98% relative
-to the best 1D regulators across tested cells and three initial conditions.
-However, the 2D advantage is already comparably large with one topology, so the
-stronger claim that increasing structural variety monotonically *causes* the
-need for additional dimensionality is not supported by Experiment 006.
+**Current evidence.** Experiment 005 provides threshold-dependent support for a
+raw intervention-dimensionality effect. Experiment 006 shows that the effect
+survives exact matching of candidate-action cardinality and mean action norm:
+the best 2D regulators reduce mean error by roughly 95–98% relative to the best
+1D regulators across the tested PCC cells.
 
-**Falsification pressure.** The dimensionality effect disappears after matching
-action entropy/cardinality and intervention magnitude, fails across initial
-conditions or stochastic perturbations, or is reproduced entirely by a simpler
-non-PCC control benchmark.
+Experiment 007 provides an important specificity failure. A non-PCC benchmark
+on the same three-component simplex, using exogenous directional selection with
+no cyclic pairwise interaction, reproduces the effect almost exactly: its median
+2D relative error reduction is 97.2% (range 93.4–98.5%), compared with a median
+PCC-minus-benchmark difference of about -0.4 percentage points across matched
+cells. Thus the large 1D-to-2D performance jump is best interpreted at present
+as **generic compositional controllability geometry**, not a PCC-specific
+requisite-variety result.
+
+The narrower statement that multi-direction intervention access matters remains
+well supported computationally. The stronger PCC-specific portion of H5 is
+**not supported** by Experiment 007.
+
+**Falsification pressure.** The generic dimensionality effect would be weakened
+if it disappears after tighter action-entropy/effective-outcome matching or under
+stochastic perturbations. A PCC-specific claim now requires some additional PCC
+quantity (for example EBID, cycle phase, or topology-dependent prediction) to
+explain regulator demand beyond this non-PCC geometric baseline.

@@ -45,3 +45,11 @@
 - [x] Repeat the capacity-matched dimensionality test across multiple initial conditions.
 - [ ] Repeat under stochastic state/process perturbations.
 - [ ] Compare against non-PCC compositional control benchmarks to test specificity.
+
+## Phase 6 — Specificity and geometric controls
+
+- [x] Compare the capacity-matched 1D/2D effect against a non-PCC compositional benchmark.
+- [x] Treat reproduction of the effect by the benchmark as a specificity failure rather than positive PCC evidence.
+- [ ] Capacity-match effective action outcomes / action entropy, not only cardinality and mean norm.
+- [ ] Add stochastic process perturbations to both PCC and benchmark systems.
+- [ ] Search for PCC-specific predictors of regulator demand (EBID, cycle phase, topology uncertainty) beyond the geometric baseline.

@@ -189,3 +189,57 @@ def simulate_multichannel_topology_regulation(
         "max_error": float(np.max(tail_errors)),
         "switches": float(switches),
     }
+
+
+def simulate_multichannel_benchmark_regulation(
+    regulator: object,
+    *,
+    regime_schedule: list[str] | tuple[str, ...],
+    true_strength: float = 1.5,
+    initial: np.ndarray | None = None,
+    target: np.ndarray | None = None,
+    burn_in: int = 200,
+) -> dict[str, float]:
+    """Simulate vector interventions in a non-PCC compositional benchmark."""
+    if not regime_schedule:
+        raise ValueError("regime_schedule must be non-empty")
+
+    from .benchmark import benchmark_step
+    from .regulators import apply_multichannel_action
+
+    state = np.array([0.58, 0.27, 0.15], dtype=float) if initial is None else np.asarray(initial, dtype=float)
+    state = state / state.sum()
+    target = np.full(3, 1.0 / 3.0) if target is None else np.asarray(target, dtype=float)
+
+    errors: list[float] = []
+    deficits: list[float] = []
+    action_norms: list[float] = []
+    active_components: list[float] = []
+    switches = 0
+    previous = regime_schedule[0]
+
+    for regime in regime_schedule:
+        if regime != previous:
+            switches += 1
+        previous = regime
+        if not hasattr(regulator, "choose_regime"):
+            raise TypeError("benchmark regulator must implement choose_regime")
+        action = np.asarray(regulator.choose_regime(state, target, regime), dtype=float)
+        controlled = apply_multichannel_action(state, action)
+        state = benchmark_step(controlled, regime=regime, strength=true_strength)
+        errors.append(regulation_error(state, target))
+        deficits.append(entropy_deficit(state))
+        action_norms.append(float(np.linalg.norm(action)))
+        active_components.append(float(np.count_nonzero(np.abs(action) > 1e-12)))
+
+    start = max(0, len(regime_schedule) - burn_in)
+    tail_errors = np.asarray(errors[start:], dtype=float)
+    return {
+        "mean_error": float(np.mean(tail_errors)),
+        "p95_error": float(np.quantile(tail_errors, 0.95)),
+        "mean_entropy_deficit": float(np.mean(deficits[start:])),
+        "mean_action_norm": float(np.mean(action_norms[start:])),
+        "mean_active_components": float(np.mean(active_components[start:])),
+        "max_error": float(np.max(tail_errors)),
+        "switches": float(switches),
+    }
