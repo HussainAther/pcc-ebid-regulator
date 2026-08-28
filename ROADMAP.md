@@ -116,3 +116,22 @@
    stochastic trajectories.
 6. Treat disappearance of the OOD advantage under these diagnostics as evidence
    that Experiment 010 was regime-specific rather than general.
+
+## Experiment 011 — diagnose topology-dependent EBID transfer — complete
+
+- [x] Keep canonical EBID frozen.
+- [x] Sweep observation windows 10, 25, and 50 steps.
+- [x] Sweep future horizons 20, 40, and 80 steps.
+- [x] Diagnose held-out canonical and reverse topologies under unseen noise.
+- [x] Stratify transfer by interaction strength and fixed simplex-phase quadrant.
+- [x] Preserve negative short-window cells and mixed reverse-topology transfer.
+
+## Recommended Experiment 012 — phase-aware but pre-specified EBID calibration
+
+1. Keep the canonical EBID feature family unchanged.
+2. Pre-specify phase-aware calibration (e.g. phase interaction terms) using only
+   training data; do not alter EBID itself.
+3. Compare against a duration-matched generic entropy-rate baseline.
+4. Use independent seeds and denser phase coverage.
+5. Test whether phase-aware calibration rescues short-window OOD transfer without
+   degrading long-window or non-PCC controls.

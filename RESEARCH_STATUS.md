@@ -279,3 +279,17 @@ unseen stochasticity, but rules out a topology-uniform claim.
 
 Thirty-two unit tests pass after adding the matched stochastic perturbation
 module and Experiment 010 controls.
+
+## Experiment 011 — topology-dependent transfer diagnosis
+
+Experiment 011 keeps canonical EBID frozen and diagnoses the joint-OOD failure
+from Experiment 010. The dominant factor is observation-window length. With a
+50-step observation window, EBID improves held-out canonical-PCC MAE at all
+three tested future horizons (`+40.5%`, `+9.8%`, and `+32.2%`). Ten- and 25-step
+windows are frequently harmful, especially at the 40-step horizon. Phase
+stratification is also suggestive: Q1/Q4 show positive median gains whereas
+Q2/Q3 show negative median gains. Strength effects are non-monotonic.
+
+The current claim is therefore narrower: canonical EBID has **timescale- and
+phase-dependent OOD transfer** in this toy system. It is not uniformly robust,
+and the short-window failures remain part of the evidence record.

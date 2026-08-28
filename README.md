@@ -226,3 +226,13 @@ EBID helps three of four PCC topologies strongly but fails on canonical PCC.
 The current claim is therefore **partial OOD replication with topology
 dependence**, not a universal EBID-regulator law. See
 `experiments/010_ood_ebid/RESULTS.md` for the full interpretation.
+
+## Experiment 011 update
+
+The Experiment 010 canonical-PCC joint-OOD failure is not uniform. Holding the
+EBID definition fixed, Experiment 011 finds that a 50-step observation window
+restores positive held-out canonical-PCC transfer at all tested future horizons
+(relative MAE reductions of about 10–40%), while 10- and 25-step windows often
+fail. Fixed cycle-phase quadrants also separate favorable (Q1/Q4) from less
+favorable (Q2/Q3) transfer more clearly than interaction strength. See
+`experiments/011_ebid_transfer_diagnosis/RESULTS.md`.

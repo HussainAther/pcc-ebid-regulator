@@ -133,3 +133,23 @@ noise+structure OOD test, EBID helps three of four PCC topologies strongly
 This is **partial support**, not universal replication. The canonical joint-OOD
 failure is direct falsification pressure on any claim that EBID is uniformly
 sufficient across PCC structures and shifts.
+
+## H8 — EBID transfer is timescale- and phase-dependent
+
+**Hypothesis.** The topology-dependent joint-OOD failures of canonical EBID are
+partly caused by insufficient observation of the cyclic trajectory: longer
+observation windows should improve transfer, and residual failures may cluster
+by cycle phase rather than interaction strength alone.
+
+**Experiment 011 evidence.** With canonical EBID frozen, held-out canonical PCC
+shows positive joint-OOD MAE reduction at all three tested future horizons when
+the observation window is 50 steps (`+40.5%`, `+9.8%`, `+32.2%`). In contrast,
+10- and 25-step observation windows are often harmful, including large negative
+transfer at the 40-step horizon. Across fixed simplex-phase quadrants, Q1/Q4 are
+positive in 7/9 window×horizon cells while Q2/Q3 are positive in only 4/9.
+Interaction strength is non-monotonic and therefore does not explain the failure
+by itself.
+
+This is **partial support** for a timescale/phase-dependent interpretation, not
+a universal phase law. Reverse topology is also mixed, so canonical orientation
+alone is not the cause.
