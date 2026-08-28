@@ -293,3 +293,28 @@ Q2/Q3 show negative median gains. Strength effects are non-monotonic.
 The current claim is therefore narrower: canonical EBID has **timescale- and
 phase-dependent OOD transfer** in this toy system. It is not uniformly robust,
 and the short-window failures remain part of the evidence record.
+
+## Experiment 012 — pre-specified phase-aware EBID calibration
+
+Experiment 012 directly tests the most tempting mechanistic interpretation of
+Experiment 011. Canonical EBID remains frozen. The only added terms are
+first-harmonic interactions between each of the 11 EBID features and
+`sin(phase)` / `cos(phase)`. The exact Experiment 011 trajectories and the same
+joint held-out-topology + unseen-noise protocol are reused, preventing dataset
+regeneration from becoming an additional degree of freedom.
+
+The result is a clear negative. For held-out canonical PCC, phase-aware EBID
+improves prediction in only `1/9` observation-window × horizon cells; the median
+relative MAE change is strongly negative. The one positive cell (10-step
+observation, 40-step horizon; about `+46.6%`) has a paired-bootstrap interval
+that crosses zero. Across the control PCC topologies the interaction model is
+also usually worse than plain EBID.
+
+Therefore the phase-quadrant pattern in Experiment 011 is **not validated as a
+predictive mechanism** by this pre-specified interaction test. No alternative
+phase basis, regularization strength, or subset of EBID features was tuned after
+seeing the result. The 011 timescale finding remains the stronger observation:
+longer trajectory windows improve plain-EBID transfer, whereas simple endpoint
+phase interactions do not explain that improvement.
+
+Thirty-four tests pass after adding the Experiment 012 guardrail tests.

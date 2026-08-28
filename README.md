@@ -236,3 +236,19 @@ restores positive held-out canonical-PCC transfer at all tested future horizons
 fail. Fixed cycle-phase quadrants also separate favorable (Q1/Q4) from less
 favorable (Q2/Q3) transfer more clearly than interaction strength. See
 `experiments/011_ebid_transfer_diagnosis/RESULTS.md`.
+
+### Experiment 012 — phase-aware EBID calibration
+
+Experiment 012 tests whether the phase pattern diagnosed in Experiment 011 is
+actually predictive. Canonical EBID is left unchanged; the readout receives only
+pre-specified first-harmonic `EBID × sin(phase)` and `EBID × cos(phase)` terms.
+Under the same joint held-out-topology + unseen-noise transfer protocol, this
+**does not rescue** the canonical-PCC failures: phase-aware EBID improves only
+1/9 canonical window×horizon cells and 0/3 of the 50-step cells, and the lone
+positive cell is bootstrap-uncertain. The same interaction model is broadly
+harmful in the other PCC structures.
+
+Thus the Q1/Q4 pattern from Experiment 011 remains descriptive rather than a
+validated phase law. The stronger surviving lead is observation timescale:
+plain frozen EBID transfers much more reliably when enough trajectory history is
+observed. See `experiments/012_phase_aware_ebid/RESULTS.md`.

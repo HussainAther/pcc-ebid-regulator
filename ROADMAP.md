@@ -135,3 +135,26 @@
 4. Use independent seeds and denser phase coverage.
 5. Test whether phase-aware calibration rescues short-window OOD transfer without
    degrading long-window or non-PCC controls.
+
+## Experiment 012 — phase-aware but pre-specified EBID calibration — complete
+
+- [x] Keep the 11 canonical EBID features unchanged.
+- [x] Reuse Experiment 011 data rather than regenerate favorable trajectories.
+- [x] Pre-specify first-harmonic `EBID × sin(phase)` and `EBID × cos(phase)` terms.
+- [x] Evaluate under held-out topology + unseen-noise joint OOD transfer.
+- [x] Use relative MAE and paired bootstrap intervals.
+- [x] Preserve the negative result: phase-aware calibration does not rescue the
+      short-window failures and usually worsens transfer.
+
+## Recommended Experiment 013 — observation-timescale sufficiency test
+
+1. Treat Experiment 011's observation-window result, not its phase split, as the
+   main surviving mechanistic lead.
+2. Keep EBID and the plain readout frozen from Experiments 009–011.
+3. Sweep a denser, pre-specified observation-duration grid (for example 5–80
+   steps) with independent trajectory seeds.
+4. Express duration both in raw steps and in estimated fractions of a cycle.
+5. Test whether EBID transfer improves at a reproducible fraction-of-cycle
+   threshold across coupling strengths/topologies.
+6. Include the matched quadratic and non-PCC controls to distinguish a generic
+   "more history helps" effect from an EBID/PCC-specific timescale effect.

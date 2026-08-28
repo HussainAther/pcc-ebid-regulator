@@ -153,3 +153,24 @@ by itself.
 This is **partial support** for a timescale/phase-dependent interpretation, not
 a universal phase law. Reverse topology is also mixed, so canonical orientation
 alone is not the cause.
+
+## H9 — Simple phase-aware EBID readout rescues OOD transfer
+
+**Hypothesis.** If the phase pattern observed in Experiment 011 is genuinely
+predictive, then adding pre-specified first-harmonic interactions between the
+frozen canonical EBID features and simplex phase should reduce joint-OOD
+prediction error, particularly in the short-window canonical-PCC regimes that
+plain EBID struggled with.
+
+**Experiment 012 evidence.** This hypothesis is **not supported**. With EBID
+unchanged and phase represented only by pre-specified `sin(phase)` and
+`cos(phase)` interactions, the phase-aware model improves held-out canonical PCC
+MAE in only `1/9` observation-window × horizon cells (`1/6` short-window cells
+and `0/3` 50-step cells). The single positive canonical cell has a bootstrap
+interval crossing zero. The same phase-aware model is also broadly harmful in
+the other held-out PCC structures.
+
+The fixed phase-quadrant separation from Experiment 011 should therefore remain
+a descriptive lead rather than a predictive phase law. The stronger timescale
+result from Experiment 011 remains intact: this experiment tests the readout,
+not the frozen EBID definition or the observation-window effect itself.
