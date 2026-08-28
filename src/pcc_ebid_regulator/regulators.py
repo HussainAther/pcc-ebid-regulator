@@ -92,3 +92,24 @@ class TrendRegulator:
 
 
 ControllerFactory = Callable[[], object]
+
+@dataclass
+class OracleDynamicRegulator:
+    """One-step regulator given the current true coupling strength.
+
+    This deliberately grants perfect instantaneous parameter knowledge so that
+    Experiment 003 varies action repertoire while holding model adequacy at an
+    optimistic upper bound. It is therefore not a realistic controller.
+    """
+
+    variety: int
+    max_action: float = 0.03
+
+    def choose_dynamic(self, state: np.ndarray, target: np.ndarray, true_strength: float) -> float:
+        actions = action_repertoire(self.variety, self.max_action)
+        scored: list[tuple[float, float]] = []
+        for action in actions:
+            controlled = apply_control_action(state, float(action))
+            predicted = step(controlled, strength=true_strength)
+            scored.append((regulation_error(predicted, target), float(action)))
+        return min(scored, key=lambda item: item[0])[1]

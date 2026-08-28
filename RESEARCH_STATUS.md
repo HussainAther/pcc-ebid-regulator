@@ -72,3 +72,12 @@ nontrivial over time:
 - capacity-matched topology and phase ablations.
 
 Null results should remain in the repository as part of the evidence trail.
+
+
+## Experiment 003 — parameter drift
+
+Dynamic coupling drift produces modest degradation at fixed regulator variety,
+and stricter error thresholds sometimes require larger repertoires. The effect
+is threshold-sensitive and non-monotonic across the small stochastic sample, so
+H1 remains **unconfirmed**. The present result is best described as mixed /
+weakly suggestive evidence motivating stronger nonstationary perturbations.

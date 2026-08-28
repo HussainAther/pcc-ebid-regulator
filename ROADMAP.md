@@ -21,7 +21,8 @@
 - [ ] Capacity-match model classes more rigorously.
 - [ ] Add topology ablation: correct cycle, reversed cycle, missing edge.
 - [ ] Add explicit phase estimator and phase-aware controller.
-- [ ] Test robustness under parameter drift.
+- [x] Test robustness under scalar parameter drift.
+- [ ] Test topology switching and component-specific coupling drift.
 
 ## Phase 4 — Stronger cybernetic claims only if warranted
 

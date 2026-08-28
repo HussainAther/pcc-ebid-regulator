@@ -41,14 +41,23 @@ pcc-ebid-regulator/
 ├── src/pcc_ebid_regulator/
 │   ├── __init__.py
 │   ├── dynamics.py
-│   └── metrics.py
+│   ├── drift.py
+│   ├── experiments.py
+│   ├── metrics.py
+│   └── regulators.py
 ├── experiments/
 │   ├── 001_requisite_variety/
 │   │   └── run.py
-│   └── 002_good_regulator/
-│       └── README.md
+│   ├── 002_good_regulator/
+│   │   ├── README.md
+│   │   └── run.py
+│   └── 003_dynamic_requisite_variety/
+│       ├── README.md
+│       └── run.py
 ├── tests/
-│   └── test_metrics.py
+│   ├── test_drift.py
+│   ├── test_metrics.py
+│   └── test_regulators.py
 └── notes/
     └── legacy_grt_comparison.md
 ```
@@ -116,10 +125,16 @@ do **not** yet support the stronger PCC/EBID-regulator hypotheses.
 - **Experiment 002:** the correctly specified one-step PCC predictive model does
   not consistently outperform simpler state-only/history controllers.
 
+- **Experiment 003:** scalar coupling drift modestly degrades performance at
+  fixed variety. At a mean-error criterion of `0.030`, stationary random-walk
+  controls require variety `5`; stronger stochastic drift sometimes raises the
+  empirical threshold to `9`. The effect is threshold-sensitive and not cleanly
+  monotonic, so H1 remains unconfirmed.
+
 These null/mixed results are useful. They show that the deterministic symmetric
-system is too easy to regulate near equilibrium and motivate the next tests:
-stochastic perturbation, parameter drift, topology ablation, and explicit cycle
-phase.
+system and scalar speed drift are not enough to yield a robust variety law. The
+next stronger tests are topology switching, component-specific coupling drift,
+exogenous disturbance classes, and explicit cycle phase.
 
 See [`RESEARCH_STATUS.md`](RESEARCH_STATUS.md) and
 [`HYPOTHESES.md`](HYPOTHESES.md) for claim boundaries and falsification criteria.
