@@ -237,3 +237,19 @@ The repository therefore does **not** support a reproducible privileged cycle fr
 **Experiment 021 result: partially supported.** Across 80 frozen class × family × scale folds, non-EBID trajectory summaries improved leave-one-family-out prediction by 22.5% MAE beyond a class+scale baseline (cross-family R² ≈ 0.74). Endpoint-imbalance variability and mean activity were the strongest positive rank correlates. However, leave-one-class-out prediction failed badly, so the current descriptor mapping is not a universal cross-class law.
 
 **Claim boundary.** H17 supports within-panel interpolation across unseen trajectory families, not extrapolation to an unseen dynamical mechanism. No causal interpretation is assigned to the individual descriptors.
+
+## H18 — Raw-path invariants predict EBID value across unseen dynamical classes
+
+**Hypothesis.** Prospectively measured, mechanism-agnostic raw-path properties — path length, net displacement, recurrence, autocorrelation, spectral concentration, turning persistence, and occupancy — should predict the incremental value of frozen canonical EBID for future regulator-demand prediction when an entire dynamical class is held out.
+
+**Experiment 022 result: not supported.** A prospectively regenerated five-class panel retained every raw observation trajectory and evaluated the same frozen baseline-versus-EBID readout. In leave-one-dynamical-class-out prediction, adding raw-path descriptors to observation scale increased MAE by about **47.1%** overall (`R² ≈ -1.38`). Every held-out class worsened. A secondary leave-one-family-out test with class identity available also worsened MAE by about **33.9%** beyond a class+scale baseline.
+
+**Claim boundary.** Simple raw trajectory morphology is not sufficient to supply the universal cross-class mapping sought after Experiment 021. Descriptive correlations with turning persistence, occupancy, and spectral concentration remain exploratory only. The next candidate explanation should involve predictive or response properties of the dynamics rather than path shape alone.
+
+## H19 — Predictive / response invariants explain EBID regulator value
+
+**Hypothesis.** Mechanism-agnostic forecastability and standardized local response statistics should predict the incremental value of frozen canonical EBID for future regulator-demand prediction, including when an entire dynamical class is unseen during calibration.
+
+**Experiment 023 status: not supported.** On the same prospective five-class panel as Experiment 022, adding one-step forecast error, innovation variance, predictability decay, finite-difference Jacobian norms, perturbation amplification, and response anisotropy worsens leave-one-dynamical-class-out MAE by **45.7%** overall relative to observation scale alone. Four of five held-out classes worsen; only the damped oscillator improves slightly (`+9.6%`). A secondary known-class leave-one-family-out analysis also worsens (`-9.0%`).
+
+**Claim boundary.** Simple local predictive and perturbation-response summaries are not a universal cross-class explanation of EBID usefulness. This does not rule out richer finite-horizon controllability, reachability, or response-memory quantities.

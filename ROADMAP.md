@@ -261,3 +261,44 @@ Replace coarse class labels with continuous, pre-specified trajectory descriptor
 ### Recommended Experiment 022 — prospective raw-path invariants
 
 Generate a matched prospective panel in which the raw observation paths are retained for every dynamical class. Pre-specify mechanism-agnostic descriptors unavailable in the frozen summary datasets: total path length, net displacement/path-length ratio, recurrence/return probability, lagged autocorrelation, spectral concentration, turning-angle persistence, and entropy-free state-space occupancy. Use leave-one-class-out as the primary validation protocol. The target question is whether richer path geometry can predict EBID usefulness in a truly unseen dynamical class.
+
+## Experiment 022 — prospective raw-path invariants — complete
+
+- [x] Regenerate a matched five-class panel prospectively.
+- [x] Retain every raw observation trajectory in compressed `.npz` archives.
+- [x] Pre-specify mechanism-agnostic, non-EBID path invariants.
+- [x] Keep canonical EBID and regulator-demand readout frozen.
+- [x] Make leave-one-dynamical-class-out prediction the primary test.
+- [x] Run a secondary leave-one-family-out known-class control.
+- [x] Preserve the negative result without post-hoc feature selection.
+
+**Result:** simple raw-path invariants do not generalize. They worsen cross-class MAE by about 47% and known-class held-out-family MAE by about 34%.
+
+## Recommended Experiment 023 — predictive / response invariants
+
+Move beyond path morphology. Prospectively estimate quantities that encode the **transition law and response structure** without using EBID itself, for example:
+
+- one-step forecast error from a common local linear model,
+- finite-time local Jacobian / sensitivity norm,
+- response amplification to matched infinitesimal perturbations,
+- state-action coupling / controllability proxy,
+- innovation variance after local prediction,
+- short-horizon predictability decay.
+
+Use the same five-class panel and make leave-one-dynamical-class-out EBID-gain prediction the primary endpoint. The purpose is to test whether EBID usefulness is organized by **forecastability and response structure**, rather than raw path shape.
+
+## Experiment 024 — finite-horizon controllability / response memory
+
+**Motivation:** Experiments 022–023 show that static path morphology and local response invariants do not generalize across dynamical mechanisms.
+
+**Primary question:** Does EBID become useful when the observed history predicts the *set and separation of controlled future trajectories* rather than merely local next-step response?
+
+Pre-specify a small mechanism-agnostic family of finite-horizon quantities, for example:
+
+- multi-step perturbation amplification,
+- action-conditioned reachable-set volume,
+- contraction / expansion of trajectories under a fixed intervention repertoire,
+- decay time of perturbation memory,
+- action-conditioned forecast variance.
+
+Use leave-one-dynamical-class-out prediction as the primary endpoint and retain the frozen canonical EBID definition.

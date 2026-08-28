@@ -375,3 +375,17 @@ A five-class panel (PCC, persistent oscillator, damped oscillator, directional f
 
 ### Experiment 021: continuous trajectory-statistics panel
 Using 80 frozen class × family × scale folds from Experiments 016–020, non-EBID trajectory summaries predict EBID's incremental regulator value across held-out seed families. Relative to observation scale alone they reduce MAE by 32.0%; relative to a stronger class+scale baseline they reduce MAE by 22.5%, with cross-family R² ≈ 0.74. The strongest rank association is endpoint-imbalance variability (rho ≈ +0.50), followed by mean dynamical activity (rho ≈ +0.33). However, leave-one-class-out extrapolation fails: the descriptor model increases MAE by about 67% overall. Current conclusion: trajectory statistics carry within-class information about EBID usefulness, but no universal cross-class mapping has been demonstrated.
+
+### Experiment 022 — prospective raw-path invariants
+
+Experiment 022 prospectively regenerates all five dynamical classes under one matched protocol and retains every observation trajectory in compressed raw-path archives. Eight pre-specified, non-EBID path descriptors (path length, net displacement, efficiency, recurrence, autocorrelation, spectral concentration, turning persistence, and occupancy) are used to predict the held-out-family EBID gain.
+
+The primary leave-one-dynamical-class-out test is negative: adding raw-path descriptors to observation scale worsens MAE by **47.1%** overall (`R² ≈ -1.38`), with no held-out class improved. Even the secondary leave-one-family-out test, where dynamical classes are represented and class identity is available, worsens MAE by **33.9%** beyond class+scale. Some descriptors correlate descriptively with EBID gain, but they do not form a transferable predictive rule.
+
+Current conclusion: **trajectory morphology alone is insufficient**. If a general regulator principle exists, it likely requires information about transition predictability, local response/sensitivity, disturbance coupling, or action-conditioned dynamics rather than simple geometric summaries of the past path.
+
+### Experiment 023 — predictive / response invariants
+
+The prospective raw-path panel from Experiment 022 was augmented with non-EBID predictive and local-response descriptors: chronological linear forecast error, innovation variance, predictability decay, finite-difference Jacobian norms, perturbation amplification, and local anisotropy. These descriptors **do not solve** the cross-class generalization problem. Leave-one-dynamical-class-out MAE worsens by about **45.7%** relative to scale alone, and a known-class leave-one-family-out control worsens by about **9.0%** beyond class+scale.
+
+Current claim boundary: neither simple path morphology nor simple local predictive/response statistics provide a universal mapping from observed dynamics to EBID regulator value. The next regulator question should move to finite-horizon, intervention-conditioned quantities such as controllability, reachability, response memory, or action-conditioned future uncertainty.

@@ -293,3 +293,13 @@ A five-class specificity panel shows that EBID regulator-demand value is not uni
 
 ### Experiment 021 — continuous trajectory statistics
 Experiment 021 replaces the five coarse dynamical labels with continuous, non-EBID summaries across all 80 class × family × scale folds. Within dynamical classes already represented in calibration, trajectory descriptors add substantial information beyond class + scale (22.5% lower held-out-family MAE; R² ≈ 0.74). The strongest associations are greater endpoint-imbalance variability and greater dynamical activity. But the same model fails leave-one-class-out extrapolation, so the repo does **not** yet claim a universal trajectory-statistic rule for EBID usefulness. See `experiments/021_trajectory_statistics/RESULTS.md`.
+
+### Experiment 022 — prospective raw-path invariants
+
+A fully prospective five-class panel retains every raw observation trajectory and tests whether mechanism-agnostic path properties can predict when frozen canonical EBID improves regulator-demand prediction. The answer is negative: adding path length, recurrence, autocorrelation, spectral concentration, turning persistence, occupancy, and related summaries worsens leave-one-dynamical-class-out MAE by about **47%** relative to observation scale alone. Even a known-class leave-one-family-out control worsens by about **34%**. The current evidence therefore rejects simple trajectory morphology as a universal explanation of EBID value and motivates predictive/response invariants in Experiment 023. See `experiments/022_raw_path_invariants/RESULTS.md`.
+
+### Experiment 023 — predictive / response invariants
+
+Experiment 023 asks whether the failure of raw path morphology in Experiment 022 can be repaired by measuring what the observed system *predicts and how it responds*. Using the same prospective five-class raw trajectories, it computes chronological one-step forecast error, innovation variance, predictability decay, standardized finite-difference Jacobian norms, perturbation amplification, and local response anisotropy. None of these explanatory descriptors uses entropy or EBID.
+
+The primary leave-one-dynamical-class-out test is negative: adding the response descriptors worsens MAE by about **45.7%** overall relative to observation scale alone (held-out-class R² ≈ `-1.33`). Even the secondary known-class / unseen-family test worsens by about **9%**. The current evidence therefore does not support a universal local-response rule for when EBID will add regulator-demand information. See `experiments/023_response_invariants/RESULTS.md`.
