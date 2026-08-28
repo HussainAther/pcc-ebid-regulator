@@ -260,3 +260,7 @@ A dense 5–80 step sweep normalized by independently estimated PCC cycle period
 ### Experiment 014 — full-cycle observation scaling
 
 Full-cycle scaling changes the Experiment 013 result from “no threshold observed” to a more specific calibration-dependent pattern. When EBID is calibrated independently at each observation fraction, `0.10` and `0.25` cycles are not sufficient, `0.50` is uncertain, and `0.75` cycles is the first pre-specified ratio with a bootstrap-positive OOD improvement (`+33.5%` relative MAE reduction). `1.50` cycles is also reliably positive, while `1.00` cycle is positive but borderline. In contrast, a model calibrated jointly across all observation fractions improves at every ratio. The current interpretation is therefore **cycle-coverage-dependent local EBID identifiability**, not a universal critical fraction of one cycle.
+
+### Experiment 015: transition-band replication
+
+The dense independent-seed replication does **not** reproduce a smooth `0.75`-cycle threshold. With a fixed standardized ridge readout and doubled replication, EBID is reliably beneficial at `1.00` cycles (`+30.2%` relative MAE reduction) and `1.20` cycles (`+37.9%`), but strongly harmful at `0.60` cycles (`-47.8%`) and negative at `1.10`. The current evidence therefore supports observation-scale sensitivity, not a universal critical cycle fraction. See `experiments/015_transition_band/RESULTS.md`.

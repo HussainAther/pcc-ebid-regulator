@@ -176,3 +176,17 @@ Extend the timescale test beyond the sub-cycle regime. Use observation windows d
 ### Recommended Experiment 015 — transition-band replication
 
 Repeat the ratio-local test with independent seeds and denser coverage around approximately `0.4–1.2` cycles, using more samples and a pre-specified lower-variance readout. The primary question is whether the first reliable positive region remains near the substantial-cycle regime rather than being a small-sample artifact. Reinstate the non-PCC benchmark only after this transition reproduces.
+
+## Experiment 015 — transition-band replication — complete
+
+- [x] Keep canonical EBID frozen.
+- [x] Re-estimate intrinsic periods with an independent seed family.
+- [x] Densely sample `0.4–1.2` cycles in `0.1` increments.
+- [x] Double replication from 2 to 4 trajectories per cell.
+- [x] Use the same fixed standardized ridge readout for baseline and EBID models.
+- [x] Preserve the non-monotonic result: `1.0` and `1.2` cycles are reliably positive, while `0.6` is strongly harmful and `1.1` is negative.
+- [x] Reject a smooth `~0.75`-cycle threshold interpretation.
+
+### Recommended Experiment 016 — cross-seed scale map
+
+Repeat a smaller set of diagnostic ratios (`0.5`, `0.6`, `0.75`, `1.0`, `1.1`, `1.2`) across several fully independent seed families, keeping periods, EBID, noise split, ridge alpha, and horizon fixed. Estimate the distribution of EBID gain at each cycle fraction rather than a single bootstrap conditional on one simulated dataset. Primary question: are the positive full-cycle cells and the harmful `0.6` cell reproducible across simulation realizations, or is the entire non-monotonic scale map dominated by dataset-level sampling variation? Do not introduce a non-PCC benchmark until this stability question is resolved.
