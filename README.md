@@ -186,3 +186,12 @@ system and scalar speed drift are not enough to yield a robust variety law. Expe
 
 See [`RESEARCH_STATUS.md`](RESEARCH_STATUS.md) and
 [`HYPOTHESES.md`](HYPOTHESES.md) for claim boundaries and falsification criteria.
+
+### Experiment 008 — PCC-specific predictive signal
+
+A matched PCC/non-PCC prediction test asks whether dynamic PCC descriptors add
+regulator-demand information beyond generic simplex geometry. The tested
+EBID-adjacent interaction-activity signal improves PCC nonlinear-geometry
+prediction by about +0.052 CV R², but improves the non-PCC benchmark by about
++0.118. The current activity proxy therefore **fails PCC specificity**. Cycle
+phase adds a smaller, non-decisive signal.

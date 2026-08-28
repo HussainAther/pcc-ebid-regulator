@@ -196,3 +196,28 @@ it is not evidence by itself for a PCC-specific extension of requisite variety.
 
 Twenty-three unit tests pass after adding the non-PCC benchmark dynamics,
 regime-aware benchmark regulator, and benchmark simulation path.
+
+
+## Experiment 008 — PCC-specific predictive signal
+
+Experiment 008 asks whether candidate PCC dynamic descriptors predict future
+regulation difficulty after controlling for the generic simplex geometry
+identified in Experiment 007. It uses 320 matched initial states, five coupling
+strengths, four PCC topologies, four non-PCC benchmark regimes, and a fixed
+9-action one-channel regulator. The outcome is mean error over a 50-step future
+horizon.
+
+The tested PCC interaction-activity statistic is explicitly **EBID-adjacent**,
+not claimed as the canonical EBID measure. With second-order state/strength
+geometry controls, adding activity increases PCC cross-validated R² from about
+`0.652` to `0.704` (`+0.052`). The analogous non-PCC activity signal increases
+R² from about `0.383` to `0.501` (`+0.118`). Thus dynamic activity is useful,
+but the present signal fails the PCC-specificity test and does not support H2
+as currently operationalized.
+
+Cycle phase adds a modest amount beyond a coarse PCC imbalance baseline, but a
+smaller gain also appears in the benchmark. H4 therefore remains unconfirmed.
+The next decisive step is to implement the actual/canonical EBID statistic (if
+its definition is fixed in the parent PCC work) and test **incremental
+out-of-sample value over generic activity, phase, state geometry, and benchmark
+controls**.

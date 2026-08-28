@@ -27,6 +27,14 @@ failure probability after controlling for initial state and coupling strength.
 **Falsification pressure:** EBID adds no predictive information beyond simpler
 baselines.
 
+**Current evidence.** Experiment 008 tests an explicitly *EBID-adjacent*, not
+canonical, PCC interaction-activity statistic. After second-order controls for
+simplex state and coupling strength, activity improves PCC out-of-sample R² by
+about `+0.052`. However, the analogous activity statistic improves the matched
+non-PCC benchmark by about `+0.118`. Therefore H2 is **not supported as a
+PCC-specific claim under this operationalization**. A canonical EBID statistic
+would need to outperform this generic dynamic-activity control.
+
 ## H3 — Model adequacy in cyclic PCC regimes
 
 **Hypothesis.** With regulatory action capacity held fixed, a regulator that
@@ -45,7 +53,10 @@ compute, memory, or action capacity.
 **Hypothesis.** In non-convergent cyclic regimes, cycle phase carries regulatory
 information not recoverable from a coarse state summary alone.
 
-This remains a planned experiment. It should not be stated as a result.
+Experiment 008 provides a first weak test. Adding simplex phase to a coarse
+imbalance/strength model improves PCC cross-validated R² by about `+0.024`, but
+also improves the non-PCC benchmark by about `+0.011`. This is at most weak,
+non-specific evidence; H4 remains **unconfirmed**.
 
 
 ## H5 — Structural intervention dimensionality

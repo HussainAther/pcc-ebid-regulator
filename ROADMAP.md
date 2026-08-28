@@ -53,3 +53,24 @@
 - [ ] Capacity-match effective action outcomes / action entropy, not only cardinality and mean norm.
 - [ ] Add stochastic process perturbations to both PCC and benchmark systems.
 - [ ] Search for PCC-specific predictors of regulator demand (EBID, cycle phase, topology uncertainty) beyond the geometric baseline.
+
+
+## Experiment 008 — PCC-specific predictive signal — complete
+
+- [x] Match PCC and non-PCC initial states and regulator capacity.
+- [x] Control for static and nonlinear simplex geometry.
+- [x] Test EBID-adjacent interaction activity.
+- [x] Test simplex phase.
+- [x] Compare incremental predictive value to an analogous non-PCC activity signal.
+- [x] Preserve specificity failures in the claim boundary.
+
+## Recommended Experiment 009 — canonical EBID incremental-value test
+
+1. Import/freeze the canonical EBID definition from the parent PCC repository.
+2. Compute canonical EBID on matched trajectories without changing its formula
+   after seeing outcomes.
+3. Predict future regulation error/failure using nested models:
+   geometry -> generic activity -> phase/topology -> canonical EBID.
+4. Evaluate held-out R² / calibration and compare against the non-PCC control.
+5. Treat no incremental value as falsification pressure on H2 rather than
+   redefining EBID post hoc.
