@@ -44,20 +44,25 @@ pcc-ebid-regulator/
 │   ├── drift.py
 │   ├── experiments.py
 │   ├── metrics.py
-│   └── regulators.py
+│   ├── regulators.py
+│   └── topology.py
 ├── experiments/
 │   ├── 001_requisite_variety/
 │   │   └── run.py
 │   ├── 002_good_regulator/
 │   │   ├── README.md
 │   │   └── run.py
-│   └── 003_dynamic_requisite_variety/
+│   ├── 003_dynamic_requisite_variety/
+│   │   ├── README.md
+│   │   └── run.py
+│   └── 004_topology_switching/
 │       ├── README.md
 │       └── run.py
 ├── tests/
 │   ├── test_drift.py
 │   ├── test_metrics.py
-│   └── test_regulators.py
+│   ├── test_regulators.py
+│   └── test_topology.py
 └── notes/
     └── legacy_grt_comparison.md
 ```
@@ -131,10 +136,19 @@ do **not** yet support the stronger PCC/EBID-regulator hypotheses.
   empirical threshold to `9`. The effect is threshold-sensitive and not cleanly
   monotonic, so H1 remains unconfirmed.
 
+
+- **Experiment 004A:** structural topology switching is much harder than scalar
+  drift, but larger action repertoires still do not yield a monotonic
+  requisite-variety relationship. At criterion `0.030`, three- and four-topology
+  regimes exceed the achievable error floor for all tested repertoires.
+- **Experiment 004B:** with repertoire fixed, predictive model-based controllers
+  reduce error by roughly half versus state-only/history baselines. Exact
+  active-topology knowledge does not consistently beat a fixed misspecified
+  predictive model, so the stronger Good-Regulator interpretation remains
+  unsupported.
+
 These null/mixed results are useful. They show that the deterministic symmetric
-system and scalar speed drift are not enough to yield a robust variety law. The
-next stronger tests are topology switching, component-specific coupling drift,
-exogenous disturbance classes, and explicit cycle phase.
+system and scalar speed drift are not enough to yield a robust variety law. The next stronger test is to improve the *action-space definition of variety*: introduce qualitatively distinct intervention channels on Pressure, Control, and Chaos, then repeat topology switching. Component-specific coupling drift, exogenous disturbance classes, and explicit cycle phase remain follow-on tests.
 
 See [`RESEARCH_STATUS.md`](RESEARCH_STATUS.md) and
 [`HYPOTHESES.md`](HYPOTHESES.md) for claim boundaries and falsification criteria.

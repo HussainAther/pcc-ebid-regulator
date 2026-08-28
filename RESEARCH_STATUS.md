@@ -81,3 +81,34 @@ and stricter error thresholds sometimes require larger repertoires. The effect
 is threshold-sensitive and non-monotonic across the small stochastic sample, so
 H1 remains **unconfirmed**. The present result is best described as mixed /
 weakly suggestive evidence motivating stronger nonstationary perturbations.
+
+## Experiment 004 — topology switching
+
+Experiment 004 separates structural environmental variety from scalar coupling
+drift.
+
+### 004A — structural requisite variety
+
+Switching among reversed-cycle and edge-removal topologies produces a much
+larger increase in regulation error than Experiment 003's scalar drift. At the
+mean-error criterion of `0.030`, three- and four-topology environments cannot
+be regulated below threshold by any tested repertoire up to variety `17`.
+
+This is **not** evidence for a monotonic requisite-variety law. Among repertoires
+that do regulate well, larger cardinality is often neutral or worse. The result
+instead suggests that a one-dimensional family of scalar Control actions is a
+poor operationalization of regulator variety for structural disturbances.
+
+### 004B — topology-model adequacy
+
+With repertoire fixed at nine actions, one-step predictive model controllers
+roughly halve mean regulation error relative to state-only and short-history
+controllers under four-topology switching. Exact active-topology knowledge does
+not confer a consistent advantage over fixed misspecified predictive models;
+the fixed reverse model is marginally best in the tested grid.
+
+Thus H3 receives **partial support only in its weak form** (predictive dynamical
+structure helps relative to simple model-free baselines). The stronger claim
+that correct PCC topology representation is required remains unsupported.
+
+Eleven unit tests pass after adding topology dynamics and switching support.

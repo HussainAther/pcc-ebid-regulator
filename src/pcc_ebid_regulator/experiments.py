@@ -87,3 +87,52 @@ def simulate_dynamic_regulation(
         "strength_std": float(np.std(strengths[start:])),
         "strength_range": float(np.ptp(strengths[start:])),
     }
+
+
+def simulate_topology_regulation(
+    regulator: object,
+    *,
+    topology_schedule: list[str] | tuple[str, ...],
+    true_strength: float = 1.5,
+    initial: np.ndarray | None = None,
+    target: np.ndarray | None = None,
+    burn_in: int = 200,
+) -> dict[str, float]:
+    """Simulate regulation while the interaction topology changes over time."""
+    if not topology_schedule:
+        raise ValueError("topology_schedule must be non-empty")
+
+    state = np.array([0.58, 0.27, 0.15], dtype=float) if initial is None else np.asarray(initial, dtype=float)
+    state = state / state.sum()
+    target = np.full(3, 1.0 / 3.0) if target is None else np.asarray(target, dtype=float)
+
+    errors: list[float] = []
+    deficits: list[float] = []
+    actions: list[float] = []
+    switches = 0
+    previous = topology_schedule[0]
+
+    for topology in topology_schedule:
+        if topology != previous:
+            switches += 1
+        previous = topology
+        if hasattr(regulator, "choose_topology"):
+            action = float(regulator.choose_topology(state, target, topology))
+        else:
+            action = float(regulator.choose(state, target))
+        controlled = apply_control_action(state, action)
+        state = step(controlled, strength=true_strength, topology=topology)
+        errors.append(regulation_error(state, target))
+        deficits.append(entropy_deficit(state))
+        actions.append(abs(action))
+
+    start = max(0, len(topology_schedule) - burn_in)
+    tail_errors = np.asarray(errors[start:], dtype=float)
+    return {
+        "mean_error": float(np.mean(tail_errors)),
+        "p95_error": float(np.quantile(tail_errors, 0.95)),
+        "mean_entropy_deficit": float(np.mean(deficits[start:])),
+        "mean_action_magnitude": float(np.mean(actions[start:])),
+        "max_error": float(np.max(tail_errors)),
+        "switches": float(switches),
+    }

@@ -19,10 +19,11 @@
 
 - [x] Correct-model versus state/history/misspecified-model baseline.
 - [ ] Capacity-match model classes more rigorously.
-- [ ] Add topology ablation: correct cycle, reversed cycle, missing edge.
+- [x] Add topology ablation: correct cycle, reversed cycle, missing edge.
 - [ ] Add explicit phase estimator and phase-aware controller.
 - [x] Test robustness under scalar parameter drift.
-- [ ] Test topology switching and component-specific coupling drift.
+- [x] Test topology switching.
+- [ ] Test component-specific coupling drift.
 
 ## Phase 4 — Stronger cybernetic claims only if warranted
 
@@ -31,3 +32,12 @@
       of existing stochastic/dynamic versions of requisite variety.
 - [ ] Write theorem/proposition statements only after literature comparison and
       computational falsification survive.
+
+
+## Phase 5 — Improve the meaning of regulator variety
+
+- [ ] Replace scalar action-level count with multiple qualitatively distinct action channels.
+- [ ] Give the regulator independent interventions on Pressure, Control, and Chaos.
+- [ ] Compare action-space dimensionality, entropy, and cardinality as variety measures.
+- [ ] Re-run topology switching with capacity-matched multi-channel regulators.
+- [ ] Only then revisit a structural requisite-variety claim.

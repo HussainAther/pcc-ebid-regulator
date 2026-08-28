@@ -1,29 +1,45 @@
-"""Minimal PCC dynamics used by the first regulator experiments."""
+"""Minimal PCC dynamics used by the regulator experiments."""
 
 from __future__ import annotations
 
 import numpy as np
 
+from .topology import topology_matrix
 
-def step(state: np.ndarray, dt: float = 0.02, strength: float = 1.0) -> np.ndarray:
-    """Advance a normalized three-state cyclic system by one Euler step.
 
-    State order is [Pressure, Control, Chaos]. The interaction signs encode:
-    Control suppresses Pressure, Pressure suppresses Chaos, Chaos disrupts Control.
-    The model is intentionally minimal and is not asserted to be a canonical PCC equation.
+def step(
+    state: np.ndarray,
+    dt: float = 0.02,
+    strength: float = 1.0,
+    topology: str = "canonical",
+) -> np.ndarray:
+    """Advance a normalized three-state interaction system by one Euler step.
+
+    State order is [Pressure, Control, Chaos]. ``canonical`` exactly reproduces
+    the original toy PCC equations. Other named topologies are used only for
+    structural-variety experiments and are not asserted as canonical PCC.
     """
-    p, c, ch = np.asarray(state, dtype=float)
-    dp = strength * p * (ch - c)
-    dc = strength * c * (p - ch)
-    dch = strength * ch * (c - p)
-    x = np.array([p + dt * dp, c + dt * dc, ch + dt * dch])
-    x = np.clip(x, 1e-12, None)
-    return x / x.sum()
+    x = np.asarray(state, dtype=float)
+    matrix = topology_matrix(topology)
+    fitness = matrix @ x
+    mean_fitness = float(x @ fitness)
+    dx = strength * x * (fitness - mean_fitness)
+    nxt = x + dt * dx
+    nxt = np.clip(nxt, 1e-12, None)
+    return nxt / nxt.sum()
 
 
-def simulate(initial: np.ndarray, steps: int, dt: float = 0.02, strength: float = 1.0) -> np.ndarray:
+def simulate(
+    initial: np.ndarray,
+    steps: int,
+    dt: float = 0.02,
+    strength: float = 1.0,
+    topology: str = "canonical",
+) -> np.ndarray:
     trajectory = np.empty((steps + 1, 3), dtype=float)
     trajectory[0] = np.asarray(initial, dtype=float) / np.sum(initial)
     for t in range(steps):
-        trajectory[t + 1] = step(trajectory[t], dt=dt, strength=strength)
+        trajectory[t + 1] = step(
+            trajectory[t], dt=dt, strength=strength, topology=topology
+        )
     return trajectory

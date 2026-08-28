@@ -113,3 +113,51 @@ class OracleDynamicRegulator:
             predicted = step(controlled, strength=true_strength)
             scored.append((regulation_error(predicted, target), float(action)))
         return min(scored, key=lambda item: item[0])[1]
+
+@dataclass
+class OracleTopologyRegulator:
+    """One-step regulator given the currently active topology.
+
+    Used in Experiment 004A to isolate action repertoire size while granting
+    optimistic, perfect structural knowledge.
+    """
+
+    variety: int
+    model_strength: float = 1.5
+    max_action: float = 0.03
+
+    def choose_topology(self, state: np.ndarray, target: np.ndarray, topology: str) -> float:
+        actions = action_repertoire(self.variety, self.max_action)
+        scored: list[tuple[float, float]] = []
+        for action in actions:
+            controlled = apply_control_action(state, float(action))
+            predicted = step(
+                controlled,
+                strength=self.model_strength,
+                topology=topology,
+            )
+            scored.append((regulation_error(predicted, target), float(action)))
+        return min(scored, key=lambda item: item[0])[1]
+
+
+@dataclass
+class FixedTopologyRegulator:
+    """One-step model-based regulator that assumes one fixed topology."""
+
+    variety: int
+    model_topology: str = "canonical"
+    model_strength: float = 1.5
+    max_action: float = 0.03
+
+    def choose(self, state: np.ndarray, target: np.ndarray) -> float:
+        actions = action_repertoire(self.variety, self.max_action)
+        scored: list[tuple[float, float]] = []
+        for action in actions:
+            controlled = apply_control_action(state, float(action))
+            predicted = step(
+                controlled,
+                strength=self.model_strength,
+                topology=self.model_topology,
+            )
+            scored.append((regulation_error(predicted, target), float(action)))
+        return min(scored, key=lambda item: item[0])[1]
