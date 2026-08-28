@@ -272,3 +272,17 @@ The six diagnostic cycle fractions from Experiment 015 were repeated across eigh
 ### Experiment 017 — leave-one-seed-family-out calibration
 
 Experiment 017 reuses the complete Experiment-016 simulation set but stabilizes calibration: at each locked cycle fraction, the baseline and frozen-EBID readouts are fit on seven entire simulation families and evaluated on the eighth family's canonical PCC trajectories at unseen noise. This materially reduces the extreme family-to-family spread seen in Experiment 016. EBID is reliably positive at `0.60` cycles (`+15.3%` mean relative MAE reduction) and especially at `1.00` cycle (`+23.6%`, positive in all 8/8 held-out families). The formerly harmful `0.75` cell becomes approximately neutral. The result indicates that small-sample readout instability explained a substantial part of the previous jagged scale map, while still rejecting a monotonic cycle-fraction threshold. See `experiments/017_leave_one_family_out/RESULTS.md`.
+
+### Experiment 018 — matched non-PCC cross-family specificity
+
+Experiment 018 tests only the two observation scales stabilized by Experiment 017 (`0.60` and `1.00` PCC reference cycles) against the generic directional compositional benchmark using the same family-level OOD calibration. At `0.60`, PCC EBID gain is `+15.3%` versus `-5.7%` for the benchmark, a paired specificity margin of about `+21.0` percentage points. At `1.00`, PCC gains `+23.6%` in all 8/8 held-out families while benchmark EBID is harmful in all 8/8 families (`-203.5%` mean relative change). Both paired specificity margins have bootstrap intervals entirely above zero.
+
+This is the strongest PCC-enrichment result in the regulator line so far, but it is specific to the current directional non-PCC control. The next benchmark should itself be oscillatory so that PCC structure can be separated from generic cyclic dynamics. See `experiments/018_nonpcc_specificity/RESULTS.md`.
+
+### Experiment 019 — oscillatory non-PCC specificity
+
+Experiment 019 asks whether the Experiment-018 PCC enrichment survives once the non-PCC comparator is itself cyclic. The control is an externally forced three-component simplex oscillator with PCC-matched periods but no endogenous pairwise dominance. It uses the same `0.60` / `1.00` observation scales, leave-one-family-out calibration, unseen-noise split, future horizon, ridge readout, sample counts, and frozen canonical EBID features.
+
+It **falsifies the broad PCC-specific interpretation** of Experiment 018. At `0.60`, the oscillatory control gains `+49.3%` relative MAE reduction versus PCC's `+15.3%`; the paired PCC-minus-control margin is `-34.0` percentage points with its bootstrap interval entirely below zero. At `1.00`, the oscillatory control (`+22.8%`) essentially matches PCC (`+23.6%`), with a specificity interval crossing zero.
+
+The current evidence therefore supports canonical EBID as a useful dynamical-history descriptor for some regulator-prediction tasks, but not as uniquely PCC-specific. Generic oscillatory compositional dynamics can reproduce or exceed the stabilized PCC signal. See `experiments/019_oscillatory_specificity/RESULTS.md`.

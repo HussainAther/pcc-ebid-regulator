@@ -348,3 +348,23 @@ Experiment 017 directly tests whether Experiment 016's extreme seed-family varia
 The better-conditioned calibration reduces family-level dispersion substantially. `0.60` cycles remains reliably positive (`+15.3%` mean relative MAE reduction; bootstrap interval fully above zero), while `1.00` cycle becomes the strongest cross-family result (`+23.6%`, 8/8 held-out families positive, bootstrap interval about `+14.6%` to `+32.9%`). The prior `0.75`-cycle harmful effect collapses to near zero. Thus a meaningful portion of the Experiment-016 jaggedness was readout-estimation noise rather than stable dynamical heterogeneity.
 
 **Current claim boundary:** canonical EBID has reproducible out-of-family predictive value at selected observation scales under stabilized cross-family calibration, especially around one intrinsic cycle, but the scale profile remains non-monotonic and is not yet PCC-specific. A matched non-PCC leave-family-out specificity control is now the priority.
+
+## Experiment 018 — matched non-PCC cross-family specificity
+
+Experiment 018 returns to the specificity question only at the two observation scales that survived Experiment 017 (`0.60` and `1.00` PCC reference cycles). The benchmark uses the same absolute observation durations defined by the PCC intrinsic-period ruler, but its dynamics are generic exogenous directional selection rather than non-transitive PCC interaction. EBID remains frozen and the leave-one-family-out ridge protocol is unchanged.
+
+The comparison is strongly PCC-enriched. At `0.60`, PCC improves by `+15.3%` while the benchmark averages `-5.7%`; the paired specificity margin is `+21.0` percentage points with a bootstrap interval entirely above zero. At `1.00`, PCC improves by `+23.6%` in 8/8 held-out families, while benchmark EBID worsens all 8/8 families (`-203.5%` mean relative change), producing a very large positive paired specificity margin.
+
+The `1.00` benchmark failure is not caused by a near-zero baseline MAE: baseline errors remain around `0.06–0.12`, while EBID-augmented errors rise to roughly `0.21–0.32`. The directional benchmark's long trajectories collapse toward low-entropy simplex corners, making the frozen entropy-rate readout strongly non-transferable across regimes.
+
+Current status: **PCC-enriched EBID transfer is supported relative to the current directional compositional benchmark at the two stabilized scales.** This does not establish uniqueness to PCC. The next specificity control should be oscillatory but non-PCC, to test whether the advantage is due to cyclic dynamics generally rather than PCC/non-transitivity specifically.
+
+## Experiment 019 — oscillatory non-PCC specificity
+
+**Status:** complete; negative specificity result.
+
+An externally forced three-component oscillator was matched to PCC reference periods and evaluated at the two cross-family-stable observation scales from Experiment 017 (`0.60`, `1.00`). It contains no endogenous PCC/RPS interaction.
+
+At `0.60`, frozen canonical EBID reduces held-out-family prediction MAE by `49.3%` in the oscillatory control (8/8 families positive), substantially exceeding the PCC gain of `15.3%`. The paired PCC-minus-control margin is `-34.0` percentage points with a bootstrap interval entirely below zero. At `1.00`, the control gain is `22.8%` (7/8 positive), essentially matching PCC's `23.6%`; the paired margin is `+0.8` pp with an interval crossing zero.
+
+**Current conclusion:** the strong Experiment-018 separation does not generalize from a directional control to an oscillatory one. EBID's stabilized regulator-demand signal is therefore not currently PCC-specific; generic cyclic dynamics can reproduce or exceed it. This is a major narrowing result and should supersede any broad interpretation of Experiment 018 as evidence for uniqueness to PCC.

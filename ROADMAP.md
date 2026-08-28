@@ -217,3 +217,29 @@ At the same six locked cycle fractions, train each ratio-specific baseline and E
 ### Recommended Experiment 018 — matched non-PCC cross-family specificity
 
 At the two ratios with bootstrap-positive PCC gains (`0.60` and `1.00`), generate a matched non-PCC compositional benchmark with the same family structure, strength/noise grid, observation coverage, target, controller, and leave-one-family-out readout protocol. Keep canonical EBID frozen and compute the same entropy-rate feature family on both systems. Primary question: after calibration instability is controlled, is the EBID advantage at these ratios enriched for PCC relative to generic compositional dynamics?
+
+## Experiment 018 — matched non-PCC cross-family specificity — complete
+
+- [x] Restrict the test to the Experiment-017 bootstrap-positive ratios (`0.60`, `1.00`).
+- [x] Keep canonical EBID, ridge alpha, family structure, noise split, horizon, target, and sample counts fixed.
+- [x] Use the PCC intrinsic period only as a shared absolute observation-time ruler for the non-cyclic benchmark.
+- [x] Run leave-one-family-out benchmark calibration with the same train/test structure.
+- [x] Compute paired family-level PCC-minus-benchmark specificity margins and bootstrap intervals.
+- [x] Show positive PCC enrichment at both locked ratios.
+
+### Recommended Experiment 019 — oscillatory non-PCC specificity control
+
+Construct a matched three-component **oscillatory but non-PCC** control (for example, a linear/stable rotational flow projected to the simplex or another explicitly non-nontransitive oscillator) and repeat the locked `0.60` / `1.00` cross-family protocol. Primary question: does canonical EBID remain enriched for PCC once generic cyclicity and timescale structure are present in the control?
+
+### Experiment 019 — oscillatory non-PCC specificity control
+
+- [x] Build an externally forced cyclic three-component benchmark with no endogenous PCC/RPS interaction.
+- [x] Match its forcing period to the PCC intrinsic reference period at each strength.
+- [x] Reuse the locked `0.60` / `1.00` observation scales and leave-one-family-out OOD protocol.
+- [x] Keep canonical EBID, target, horizon, ridge readout, noise split, and sample counts fixed.
+- [x] Compute paired family-level PCC-minus-oscillator specificity margins.
+- [x] Show that PCC specificity does **not** survive the oscillatory control.
+
+### Recommended Experiment 020 — matched dynamical-class panel
+
+Replace one-control-at-a-time specificity with a small pre-specified panel spanning distinct mechanisms: canonical PCC, externally forced oscillator, damped oscillator, directional compositional flow, and neutral/noisy simplex dynamics. Use the same cross-family protocol and frozen EBID features. Primary question: which dynamical properties (oscillation, damping, endogenous non-transitivity, persistence, entropy cycling) explain EBID's incremental regulator-demand value? This should be analyzed as a class-level comparison rather than another search for a single favorable comparator.

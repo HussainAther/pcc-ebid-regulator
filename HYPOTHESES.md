@@ -208,3 +208,19 @@ The repository therefore does **not** support a reproducible privileged cycle fr
 **Experiment 017 evidence.** Supported in part. Cross-family calibration sharply reduces the dispersion of family-level EBID gains and removes several Experiment-016 reversals. At `0.60` cycles the mean held-out-family gain is `+15.3%` with a bootstrap interval entirely above zero. At `1.00` cycle the mean gain is `+23.6%`, the bootstrap interval is about `+14.6%` to `+32.9%`, and all 8/8 held-out families improve. `0.75` moves from strongly harmful in Experiment 016 to approximately neutral. However, `1.10` remains slightly negative and `1.20` is only borderline positive.
 
 **Claim boundary.** Experiment 017 supports the conclusion that readout-estimation instability explained a substantial part of Experiment 016's jagged scale map. It does **not** establish a universal one-cycle threshold or monotonic cycle-coverage law. The next specificity test must determine whether the stabilized `0.60`/`1.00` effects exceed matched non-PCC dynamics under the same leave-family-out protocol.
+
+## H15 — Stabilized EBID transfer is enriched for PCC versus generic compositional dynamics
+
+**Hypothesis.** At the two observation scales that remained bootstrap-positive after Experiment 017 cross-family calibration (`0.60` and `1.00` PCC reference cycles), frozen canonical EBID should add more predictive value for held-out PCC regulator difficulty than for a matched non-PCC compositional benchmark under the same leave-one-family-out protocol.
+
+**Experiment 018 evidence.** Supported for the current benchmark. At `0.60`, PCC gains `+15.3%` relative MAE reduction while the benchmark averages `-5.7%`, giving a paired family-level specificity margin of `+21.0` percentage points (bootstrap interval about `+5.8` to `+37.8`). At `1.00`, PCC gains `+23.6%` while benchmark EBID is harmful in all 8/8 families and averages `-203.5%`, yielding a `+227.0` percentage-point specificity margin (about `+186.2` to `+271.0`).
+
+**Claim boundary.** This supports PCC enrichment relative to the current generic directional-selection benchmark, not uniqueness to PCC among all cyclic or nonlinear systems. A matched oscillatory non-PCC control is needed to separate PCC structure from cyclicity itself.
+
+## H16 — Stabilized EBID transfer is enriched for PCC versus generic oscillatory dynamics
+
+**Hypothesis.** At the stabilized `0.60` and `1.00` PCC-reference observation scales, canonical EBID should add more held-out-family regulator-demand information for PCC than for a matched oscillatory but explicitly non-PCC compositional system.
+
+**Experiment 019 status: not supported.** At `0.60`, the oscillatory non-PCC control gains `+49.3%` relative MAE reduction versus `+15.3%` for PCC, producing a paired PCC-minus-control margin of `-34.0` percentage points with a bootstrap interval entirely below zero (`-46.3` to `-21.8` pp). At `1.00`, PCC gains `+23.6%` and the oscillatory control gains `+22.8%`; the `+0.8` pp margin is indistinguishable from zero (`-12.4` to `+13.4` pp).
+
+**Claim boundary.** Experiment 018 demonstrated enrichment versus a non-oscillatory directional benchmark, but Experiment 019 shows that the enrichment does not survive a matched oscillatory control. Current evidence therefore supports EBID as a useful dynamical-history predictor in some regulator tasks, but not as uniquely PCC-specific. The next specificity question should identify which dynamical-class properties — oscillation, damping, non-transitivity, exogenous versus endogenous cycling, etc. — govern EBID's incremental value.
