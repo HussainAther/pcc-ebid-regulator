@@ -247,3 +247,17 @@ Replace one-control-at-a-time specificity with a small pre-specified panel spann
 ## Experiment 021 — matched trajectory-statistics panel
 
 Replace coarse class labels with continuous, pre-specified trajectory descriptors measured before the prediction horizon: entropy excursion, entropy-rate variance, state displacement, path length, return/persistence, spectral concentration, and net directional drift. Test which descriptors predict the *incremental* EBID gain across class × family × scale while keeping EBID itself frozen. This is the next step before proposing a general dynamical condition for EBID usefulness.
+
+## Experiment 021 — matched trajectory-statistics panel — complete
+
+- [x] Reuse the frozen 016–020 trajectories/summaries and family-level EBID gains.
+- [x] Exclude canonical EBID/entropy features from the explanatory descriptor set.
+- [x] Build all 80 class × family × scale fold summaries.
+- [x] Quantify descriptor–EBID-gain associations with family-cluster bootstrap intervals.
+- [x] Test leave-one-family-out prediction against scale-only and class+scale baselines.
+- [x] Test strict leave-one-dynamical-class-out extrapolation.
+- [x] Preserve the negative cross-class result instead of promoting an interpolation model to a universal law.
+
+### Recommended Experiment 022 — prospective raw-path invariants
+
+Generate a matched prospective panel in which the raw observation paths are retained for every dynamical class. Pre-specify mechanism-agnostic descriptors unavailable in the frozen summary datasets: total path length, net displacement/path-length ratio, recurrence/return probability, lagged autocorrelation, spectral concentration, turning-angle persistence, and entropy-free state-space occupancy. Use leave-one-class-out as the primary validation protocol. The target question is whether richer path geometry can predict EBID usefulness in a truly unseen dynamical class.

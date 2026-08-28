@@ -230,3 +230,10 @@ The repository therefore does **not** support a reproducible privileged cycle fr
 **Question.** Is the stabilized EBID regulator-demand benefit specific to PCC, generic to oscillators, or associated with a broader dynamical property?
 
 **Experiment 020 result:** no single coarse class property explains the panel. Persistent and damped oscillators are strongly positive at 0.60 cycles, but the damped oscillator loses the benefit at 1.00; neutral diffusion is strongly positive at 1.00 despite having no deterministic oscillation; directional flow is harmful. Therefore "PCC-specific" and "oscillation-specific" versions of H17 are not supported. A broader trajectory-history explanation remains open.
+
+## H17 — Continuous trajectory properties explain EBID regulator value
+**Hypothesis.** Pre-horizon trajectory properties can predict the incremental value of canonical EBID for future regulator-demand prediction beyond coarse dynamical-class identity.
+
+**Experiment 021 result: partially supported.** Across 80 frozen class × family × scale folds, non-EBID trajectory summaries improved leave-one-family-out prediction by 22.5% MAE beyond a class+scale baseline (cross-family R² ≈ 0.74). Endpoint-imbalance variability and mean activity were the strongest positive rank correlates. However, leave-one-class-out prediction failed badly, so the current descriptor mapping is not a universal cross-class law.
+
+**Claim boundary.** H17 supports within-panel interpolation across unseen trajectory families, not extrapolation to an unseen dynamical mechanism. No causal interpretation is assigned to the individual descriptors.

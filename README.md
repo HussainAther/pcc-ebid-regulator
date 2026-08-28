@@ -290,3 +290,6 @@ The current evidence therefore supports canonical EBID as a useful dynamical-his
 ### Experiment 020: dynamical-class panel
 
 A five-class specificity panel shows that EBID regulator-demand value is not uniquely PCC-specific and is not explained by oscillation alone. At 0.60 PCC-reference cycles the strongest gains occur in persistent and damped oscillators; at 1.00 cycle PCC and persistent oscillation remain positive, neutral diffusion is strongly positive, damped oscillation is mixed, and directional flow is strongly harmful. See `experiments/020_dynamical_class_panel/RESULTS.md`.
+
+### Experiment 021 — continuous trajectory statistics
+Experiment 021 replaces the five coarse dynamical labels with continuous, non-EBID summaries across all 80 class × family × scale folds. Within dynamical classes already represented in calibration, trajectory descriptors add substantial information beyond class + scale (22.5% lower held-out-family MAE; R² ≈ 0.74). The strongest associations are greater endpoint-imbalance variability and greater dynamical activity. But the same model fails leave-one-class-out extrapolation, so the repo does **not** yet claim a universal trajectory-statistic rule for EBID usefulness. See `experiments/021_trajectory_statistics/RESULTS.md`.
