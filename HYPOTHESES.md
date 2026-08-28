@@ -174,3 +174,9 @@ The fixed phase-quadrant separation from Experiment 011 should therefore remain
 a descriptive lead rather than a predictive phase law. The stronger timescale
 result from Experiment 011 remains intact: this experiment tests the readout,
 not the frozen EBID definition or the observation-window effect itself.
+
+## H10 — Cycle-fraction sufficiency for EBID transfer
+
+**Hypothesis.** Frozen canonical EBID should become reliably beneficial for hard joint-OOD regulator-difficulty prediction once the observation window spans a sufficient fraction of the intrinsic PCC cycle.
+
+**Experiment 013 status: not supported over the sampled sub-cycle range.** A dense 5–80 step sweep, corresponding to roughly 0.004–0.285 intrinsic cycles across tested strengths, did not show a stable monotonic onset. EBID was worse than the controlled baseline in most windows; the 0.20–0.30 cycle-ratio bin was only slightly positive. The experiment therefore does not establish a critical cycle fraction. The next test must extend to observation windows covering at least ~0.5–1.5 cycles.

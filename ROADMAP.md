@@ -158,3 +158,7 @@
    threshold across coupling strengths/topologies.
 6. Include the matched quadratic and non-PCC controls to distinguish a generic
    "more history helps" effect from an EBID/PCC-specific timescale effect.
+
+### Experiment 014 — full-cycle observation scaling
+
+Extend the timescale test beyond the sub-cycle regime. Use observation windows defined directly as fractions of the independently estimated intrinsic period (for example 0.1, 0.25, 0.5, 0.75, 1.0, and 1.5 cycles), keep canonical EBID frozen, and repeat the hard joint-OOD transfer test. Reinstate the matched non-PCC benchmark only if PCC shows a stable transition. Primary target: determine whether EBID benefit becomes consistently positive once observations cover a substantial fraction or multiple of a PCC cycle.

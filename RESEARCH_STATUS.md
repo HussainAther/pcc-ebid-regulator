@@ -318,3 +318,7 @@ longer trajectory windows improve plain-EBID transfer, whereas simple endpoint
 phase interactions do not explain that improvement.
 
 Thirty-four tests pass after adding the Experiment 012 guardrail tests.
+
+### Experiment 013 — observation-timescale sufficiency
+
+A dense sub-cycle observation sweep does **not** reproduce Experiment 011 as a simple EBID sufficiency threshold. Independent long-trajectory estimates place the tested 5–80 step windows at only ~0.004–0.285 intrinsic cycles. EBID transfer remained negative in most windows and normalized ratio bins, becoming only slightly positive (+3.3% relative MAE reduction) in the 0.20–0.30 bin. The defensible conclusion is that EBID transfer is timescale-sensitive, but no critical cycle fraction has yet been identified. Longer observations spanning actual fractions/multiples of a cycle are required.

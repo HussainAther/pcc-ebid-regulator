@@ -252,3 +252,7 @@ Thus the Q1/Q4 pattern from Experiment 011 remains descriptive rather than a
 validated phase law. The stronger surviving lead is observation timescale:
 plain frozen EBID transfers much more reliably when enough trajectory history is
 observed. See `experiments/012_phase_aware_ebid/RESULTS.md`.
+
+### Experiment 013 — observation-timescale sufficiency
+
+A dense 5–80 step sweep normalized by independently estimated PCC cycle periods did **not** reveal a stable EBID sufficiency threshold. The sampled windows covered only about 0.004–0.285 cycles; EBID was worse than the controlled baseline in most windows and only slightly positive in the 0.20–0.30 ratio bin. This narrows the next test to true half/full-cycle observations rather than further sub-cycle densification.
