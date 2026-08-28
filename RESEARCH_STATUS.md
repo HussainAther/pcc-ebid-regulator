@@ -340,3 +340,11 @@ Experiment 016 repeats the six diagnostic cycle fractions (`0.50`, `0.60`, `0.75
 The Experiment-015 pattern does **not** replicate. Across seed families, `0.60` cycles is the only ratio with a bootstrap-positive mean EBID gain (`+18.9%`, 7/8 families positive), despite being strongly harmful in Experiment 015. Conversely, `0.75` cycles is reliably harmful on average (`-42.2%`) despite being the first cleanly favorable point in Experiment 014. `1.00` cycles is negative on average and `1.20` is positive but uncertain. The family-level gain distributions are broad.
 
 **Claim boundary:** observation scale remains relevant, but no particular cycle fraction, full-cycle region, or non-monotonic scale pattern is currently reproducible across simulation realizations. The next priority is leave-one-seed-family-out calibration to determine whether this instability comes mainly from fitting each small family separately or from genuine family-level differences in the dynamics/EBID relationship.
+
+## Experiment 017 — leave-one-seed-family-out calibration
+
+Experiment 017 directly tests whether Experiment 016's extreme seed-family variability was caused by calibrating each small family independently. Using the same frozen EBID features, cycle ratios, period references, noise split, horizon, and ridge alpha, each ratio-specific model is trained on seven complete simulation families and tested on the eighth.
+
+The better-conditioned calibration reduces family-level dispersion substantially. `0.60` cycles remains reliably positive (`+15.3%` mean relative MAE reduction; bootstrap interval fully above zero), while `1.00` cycle becomes the strongest cross-family result (`+23.6%`, 8/8 held-out families positive, bootstrap interval about `+14.6%` to `+32.9%`). The prior `0.75`-cycle harmful effect collapses to near zero. Thus a meaningful portion of the Experiment-016 jaggedness was readout-estimation noise rather than stable dynamical heterogeneity.
+
+**Current claim boundary:** canonical EBID has reproducible out-of-family predictive value at selected observation scales under stabilized cross-family calibration, especially around one intrinsic cycle, but the scale profile remains non-monotonic and is not yet PCC-specific. A matched non-PCC leave-family-out specificity control is now the priority.

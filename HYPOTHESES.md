@@ -200,3 +200,11 @@ not the frozen EBID definition or the observation-window effect itself.
 **Experiment 016 status: not supported.** Across eight independent seed families, the scale map changes substantially. `0.60` cycles becomes the only bootstrap-positive mean effect (`+18.9%`, 7/8 families positive), while `0.75` cycles is bootstrap-negative on average (`-42.2%`). `1.00` cycles is negative on average, and `1.20` is positive but uncertain. Family-to-family variation is large at every ratio.
 
 The repository therefore does **not** support a reproducible privileged cycle fraction or a stable full-cycle sweet spot. The surviving claim is weaker: EBID transfer is observation-scale sensitive, but the observed scale map is strongly dependent on the particular simulated trajectory family. A leave-one-seed-family-out calibration test is needed to distinguish unstable small-sample readout fitting from genuine family-level dynamical heterogeneity.
+
+## H14 — Cross-family calibration stabilizes EBID transfer
+
+**Hypothesis.** If the extreme family-to-family sign reversals in Experiment 016 are primarily a small-sample calibration artifact, then fitting the frozen baseline/EBID readouts on seven complete simulation families and evaluating on the eighth should reduce gain variance and reveal more stable ratio-specific transfer effects.
+
+**Experiment 017 evidence.** Supported in part. Cross-family calibration sharply reduces the dispersion of family-level EBID gains and removes several Experiment-016 reversals. At `0.60` cycles the mean held-out-family gain is `+15.3%` with a bootstrap interval entirely above zero. At `1.00` cycle the mean gain is `+23.6%`, the bootstrap interval is about `+14.6%` to `+32.9%`, and all 8/8 held-out families improve. `0.75` moves from strongly harmful in Experiment 016 to approximately neutral. However, `1.10` remains slightly negative and `1.20` is only borderline positive.
+
+**Claim boundary.** Experiment 017 supports the conclusion that readout-estimation instability explained a substantial part of Experiment 016's jagged scale map. It does **not** establish a universal one-cycle threshold or monotonic cycle-coverage law. The next specificity test must determine whether the stabilized `0.60`/`1.00` effects exceed matched non-PCC dynamics under the same leave-family-out protocol.

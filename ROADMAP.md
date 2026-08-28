@@ -203,3 +203,17 @@ Repeat a smaller set of diagnostic ratios (`0.5`, `0.6`, `0.75`, `1.0`, `1.1`, `
 ### Recommended Experiment 017 — leave-one-seed-family-out calibration
 
 At the same six locked cycle fractions, train each ratio-specific baseline and EBID readout on seven complete seed families and evaluate on the eighth, rotating the held-out family. This increases calibration sample size without allowing any trajectories from the held-out simulation family into training. Primary question: does cross-family calibration reveal a stable average timescale effect, or does EBID usefulness remain genuinely family-dependent even when readout estimation is well conditioned? Keep the EBID definition, period references, noise split, horizon, and ridge alpha frozen.
+
+## Experiment 017 — leave-one-seed-family-out calibration — complete
+
+- [x] Reuse the complete Experiment-016 dataset without regenerating trajectories.
+- [x] Keep the six diagnostic cycle fractions fixed.
+- [x] Train each ratio-specific readout on seven complete seed families and test on the eighth.
+- [x] Keep canonical EBID, period references, unseen-noise split, horizon, and ridge alpha frozen.
+- [x] Show that cross-family calibration substantially reduces gain variance.
+- [x] Identify reproducible positive transfer at `0.60` cycles and especially `1.00` cycle.
+- [x] Preserve the non-monotonic result and reject a universal one-cycle threshold.
+
+### Recommended Experiment 018 — matched non-PCC cross-family specificity
+
+At the two ratios with bootstrap-positive PCC gains (`0.60` and `1.00`), generate a matched non-PCC compositional benchmark with the same family structure, strength/noise grid, observation coverage, target, controller, and leave-one-family-out readout protocol. Keep canonical EBID frozen and compute the same entropy-rate feature family on both systems. Primary question: after calibration instability is controlled, is the EBID advantage at these ratios enriched for PCC relative to generic compositional dynamics?
