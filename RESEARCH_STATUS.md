@@ -254,3 +254,28 @@ than further in-sample feature invention.
 
 Twenty-nine unit tests pass after adding the frozen EBID implementation and
 quadratic-baseline tests.
+
+## Experiment 010 — stochastic / out-of-distribution canonical EBID replication
+
+Experiment 010 keeps the Experiment 009 canonical EBID feature definition frozen
+and applies matched tangent-plane Gaussian process perturbations to PCC and the
+non-PCC benchmark. Models are evaluated under unseen noise strengths,
+leave-one-structure-out transfer, and their joint combination.
+
+OOD R-squared is retained but not used as the headline metric because hard
+extrapolation can make its baseline strongly negative. Relative MAE reduction
+provides the more interpretable paired comparison.
+
+Under unseen higher noise, EBID reduces PCC MAE by `43.9%` (paired bootstrap 95%
+interval about `35.1%–51.3%`) while worsening the non-PCC benchmark by `13.0%`.
+Under held-out structures it improves PCC in all four cases (`7.2–20.2%`), with
+one interval narrowly crossing zero. Under the hardest joint shift, it improves
+three non-canonical PCC topologies strongly (`36.3–65.4%`) but slightly worsens
+canonical PCC (`-2.5%`).
+
+The current status is therefore **partial OOD replication with topology
+dependence**. This strengthens H6/H7 relative to Experiment 009, especially for
+unseen stochasticity, but rules out a topology-uniform claim.
+
+Thirty-two unit tests pass after adding the matched stochastic perturbation
+module and Experiment 010 controls.

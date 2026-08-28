@@ -212,3 +212,17 @@ some PCC-enriched regulator-demand information beyond generic simplex geometry,
 but the effect is not unique to PCC and is not yet established outside this
 deterministic toy setting. Experiment 010 is therefore a stochastic /
 out-of-distribution replication with the EBID definition kept fixed.
+
+### Experiment 010 — stochastic / OOD canonical EBID replication
+
+With the canonical EBID definition frozen, Experiment 010 adds matched
+stochastic perturbations and evaluates unseen noise, held-out structures, and
+joint distribution shift. On unseen higher noise, EBID reduces PCC prediction
+MAE by about **43.9%** while worsening the matched non-PCC benchmark by about
+**13.0%**. Leave-one-structure-out transfer is positive for all four PCC
+structures, though one case is borderline. Under joint noise+structure OOD,
+EBID helps three of four PCC topologies strongly but fails on canonical PCC.
+
+The current claim is therefore **partial OOD replication with topology
+dependence**, not a universal EBID-regulator law. See
+`experiments/010_ood_ebid/RESULTS.md` for the full interpretation.

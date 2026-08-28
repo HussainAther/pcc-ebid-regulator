@@ -94,3 +94,25 @@
    and quadratic-trajectory controls.
 5. Treat failure to replicate the Experiment 009 specificity margin as direct
    falsification pressure on H6.
+
+## Experiment 010 — stochastic / out-of-distribution EBID replication — complete
+
+- [x] Keep canonical EBID frozen from Experiment 009.
+- [x] Add matched tangent-plane stochastic perturbations to PCC and benchmark.
+- [x] Train on low/no noise and test on unseen higher noise.
+- [x] Evaluate leave-one-topology/regime-out transfer.
+- [x] Evaluate joint unseen-noise + held-out-structure transfer.
+- [x] Report relative MAE reduction alongside OOD R-squared.
+- [x] Preserve the canonical-PCC joint-OOD failure in the claim boundary.
+
+## Recommended Experiment 011 — diagnose topology-dependent EBID transfer
+
+1. Keep EBID frozen again; do not add or remove features.
+2. Focus on why canonical PCC fails the joint OOD test while the other three
+   topologies benefit strongly.
+3. Sweep observation-window length, prediction horizon, strength, and phase.
+4. Test whether failure is concentrated in particular cycle phases or strengths.
+5. Compare canonical PCC against its reverse topology under exactly paired
+   stochastic trajectories.
+6. Treat disappearance of the OOD advantage under these diagnostics as evidence
+   that Experiment 010 was regime-specific rather than general.

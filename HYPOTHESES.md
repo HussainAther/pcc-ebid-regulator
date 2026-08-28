@@ -113,3 +113,23 @@ This is **provisional support** for H6 in the current deterministic toy system,
 not evidence of a universal PCC-specific law. The non-PCC gain and the one
 slightly negative repeated-CV margin both matter. Replication under stochastic
 perturbations, alternative horizons, and externally fixed datasets is required.
+
+## H7 — Canonical EBID survives stochastic and structural distribution shift
+
+**Hypothesis.** The frozen canonical EBID feature family retains incremental
+predictive value for future regulator difficulty when evaluated on unseen
+process-noise levels and held-out PCC structures, beyond endpoint geometry,
+generic activity, phase, and quadratic trajectory controls.
+
+**Experiment 010 evidence.** Under unseen noise (`sigma = 0.01, 0.02`) after
+training only on `sigma = 0, 0.002, 0.005`, adding EBID reduces PCC MAE by about
+`43.9%` (paired bootstrap 95% interval approximately `35.1%–51.3%`) while
+increasing matched benchmark MAE by about `13.0%`. In leave-one-structure-out
+tests, EBID reduces PCC MAE for all four topologies by about `7–20%`, although
+the reverse-topology interval narrowly includes zero. In the stricter joint
+noise+structure OOD test, EBID helps three of four PCC topologies strongly
+(`36–65%` relative MAE reduction) but does not help canonical PCC (`-2.5%`).
+
+This is **partial support**, not universal replication. The canonical joint-OOD
+failure is direct falsification pressure on any claim that EBID is uniformly
+sufficient across PCC structures and shifts.
