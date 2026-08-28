@@ -264,3 +264,7 @@ Full-cycle scaling changes the Experiment 013 result from “no threshold observ
 ### Experiment 015: transition-band replication
 
 The dense independent-seed replication does **not** reproduce a smooth `0.75`-cycle threshold. With a fixed standardized ridge readout and doubled replication, EBID is reliably beneficial at `1.00` cycles (`+30.2%` relative MAE reduction) and `1.20` cycles (`+37.9%`), but strongly harmful at `0.60` cycles (`-47.8%`) and negative at `1.10`. The current evidence therefore supports observation-scale sensitivity, not a universal critical cycle fraction. See `experiments/015_transition_band/RESULTS.md`.
+
+### Experiment 016 — cross-seed scale map
+
+The six diagnostic cycle fractions from Experiment 015 were repeated across eight fully independent simulation seed families with periods, canonical EBID, noise split, horizon, and ridge readout held fixed. The single-dataset scale pattern **does not replicate**. `0.60` cycles becomes reliably positive on average (`+18.9%`, 7/8 families positive), while `0.75` cycles becomes reliably harmful (`-42.2%`); `1.00` and `1.20` are mixed across families. The current evidence therefore supports **observation-scale sensitivity plus strong dataset-realization sensitivity**, not a privileged cycle fraction or stable full-cycle sweet spot. See `experiments/016_cross_seed_scale_map/RESULTS.md`.

@@ -190,3 +190,16 @@ Repeat the ratio-local test with independent seeds and denser coverage around ap
 ### Recommended Experiment 016 — cross-seed scale map
 
 Repeat a smaller set of diagnostic ratios (`0.5`, `0.6`, `0.75`, `1.0`, `1.1`, `1.2`) across several fully independent seed families, keeping periods, EBID, noise split, ridge alpha, and horizon fixed. Estimate the distribution of EBID gain at each cycle fraction rather than a single bootstrap conditional on one simulated dataset. Primary question: are the positive full-cycle cells and the harmful `0.6` cell reproducible across simulation realizations, or is the entire non-monotonic scale map dominated by dataset-level sampling variation? Do not introduce a non-PCC benchmark until this stability question is resolved.
+
+## Experiment 016 — cross-seed scale map — complete
+
+- [x] Keep canonical EBID and the fixed ridge readout unchanged.
+- [x] Freeze the Experiment-015 intrinsic-period reference clock.
+- [x] Repeat `0.50`, `0.60`, `0.75`, `1.00`, `1.10`, and `1.20` cycles across eight independent seed families.
+- [x] Estimate one EBID gain per family×ratio, then bootstrap over independent families.
+- [x] Preserve the sign reversals: `0.60` becomes reliably positive and `0.75` reliably negative.
+- [x] Reject the Experiment-015 non-monotonic curve as a reproducible scale map.
+
+### Recommended Experiment 017 — leave-one-seed-family-out calibration
+
+At the same six locked cycle fractions, train each ratio-specific baseline and EBID readout on seven complete seed families and evaluate on the eighth, rotating the held-out family. This increases calibration sample size without allowing any trajectories from the held-out simulation family into training. Primary question: does cross-family calibration reveal a stable average timescale effect, or does EBID usefulness remain genuinely family-dependent even when readout estimation is well conditioned? Keep the EBID definition, period references, noise split, horizon, and ridge alpha frozen.
