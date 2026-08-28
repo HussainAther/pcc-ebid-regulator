@@ -1,0 +1,8 @@
+EXPERIMENT 024: FINITE-HORIZON CONTROLLABILITY / RESPONSE MEMORY
+pcc                      FH-vs-scale MAE change= -58.9% R2=-5.139
+oscillatory_benchmark    FH-vs-scale MAE change= +17.0% R2=-0.173
+damped_oscillator        FH-vs-scale MAE change= +23.1% R2=-0.249
+directional_benchmark    FH-vs-scale MAE change=-524.6% R2=-39.194
+neutral_diffusion        FH-vs-scale MAE change= -14.4% R2=-1.355
+ALL                      FH-vs-scale MAE change= -56.4% R2=-2.026
+Known-class family CV: {'protocol': 'leave_one_family_out_known_classes', 'n_test': 40, 'class_scale_mae': 0.5380411764208768, 'finite_horizon_mae': 0.5364711197792864, 'relative_mae_reduction': 0.0029180975553481036, 'class_scale_r2': -0.19388054880647054, 'finite_horizon_r2': -0.09252069771330373}

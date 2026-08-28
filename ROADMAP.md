@@ -302,3 +302,46 @@ Pre-specify a small mechanism-agnostic family of finite-horizon quantities, for 
 - action-conditioned forecast variance.
 
 Use leave-one-dynamical-class-out prediction as the primary endpoint and retain the frozen canonical EBID definition.
+
+## Experiment 024 — finite-horizon controllability / response memory
+
+**Status:** complete; cross-class hypothesis not supported.
+
+Five- and twenty-step perturbation-memory and action-spread descriptors do not generalize EBID usefulness to unseen dynamical mechanisms. Leave-one-class-out MAE worsens by 56.4% overall; known-class family transfer is approximately neutral.
+
+## Experiment 025 — direct EBID-to-controlled-future coupling
+
+**Priority:** next.
+
+Stop adding meta-level handcrafted descriptors. Instead, within each observed trajectory window, pair frozen canonical EBID with directly computed future regulator quantities under a standardized intervention repertoire:
+
+1. uncontrolled future error;
+2. best achievable finite-horizon controlled error;
+3. control benefit (`uncontrolled - best controlled`);
+4. reachable-set contraction toward the target;
+5. action ranking stability / ambiguity.
+
+Primary tests:
+
+- Does EBID predict these action-conditioned future quantities beyond current state/geometry?
+- Does the incremental EBID relationship transfer across seed families?
+- Does its sign/strength transfer across dynamical classes?
+
+This is closer to the regulator-theorem question than another attempt to infer EBID usefulness from scalar path summaries.
+
+## Experiment 025 — direct EBID-to-controlled-future coupling
+
+**Status:** complete; positive cross-class result with a strong ablation caveat.
+
+Frozen canonical EBID reduces leave-one-class-out MAE for standardized future control benefit by 28.8% beyond endpoint geometry, quadratic trajectory history, and generic activity. However, 26.6 percentage points of the baseline-relative gain are already obtained from initial/mean/end entropy; rate features add only ~3% further pooled improvement.
+
+## Recommended Experiment 026 — entropy-history versus EBID-rate decomposition
+
+The direct-control result should now be decomposed prospectively rather than expanded with new handcrafted descriptors. Pre-specify four nested representations:
+
+1. state/geometry + generic dynamics;
+2. + endpoint entropy only;
+3. + entropy history levels (initial/mean/end);
+4. + canonical EBID rate/deficit-rate terms.
+
+Use the same direct control-benefit target and leave-one-class-out / leave-one-family-out protocols. Add nonlinear geometry controls so endpoint entropy cannot win merely by providing a convenient nonlinear basis for composition. The primary question is whether *history* or *rates* add anything beyond an equivalently expressive state representation.

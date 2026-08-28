@@ -389,3 +389,19 @@ Current conclusion: **trajectory morphology alone is insufficient**. If a genera
 The prospective raw-path panel from Experiment 022 was augmented with non-EBID predictive and local-response descriptors: chronological linear forecast error, innovation variance, predictability decay, finite-difference Jacobian norms, perturbation amplification, and local anisotropy. These descriptors **do not solve** the cross-class generalization problem. Leave-one-dynamical-class-out MAE worsens by about **45.7%** relative to scale alone, and a known-class leave-one-family-out control worsens by about **9.0%** beyond class+scale.
 
 Current claim boundary: neither simple path morphology nor simple local predictive/response statistics provide a universal mapping from observed dynamics to EBID regulator value. The next regulator question should move to finite-horizon, intervention-conditioned quantities such as controllability, reachability, response memory, or action-conditioned future uncertainty.
+
+### Experiment 024 — finite-horizon controllability / response memory
+
+Experiment 024 probes the held-out trajectories from the prospective five-class panel with standardized state perturbations and intervention branches rolled forward for 5 and 20 deterministic steps. The resulting non-EBID descriptors include perturbation-memory amplification, bounded response anisotropy, action-conditioned future spread, spread variability, and persistence ratios.
+
+The primary leave-one-dynamical-class-out result is negative: adding these descriptors to observation scale worsens MAE by **56.4%** overall (`R² ≈ -2.03`). The model helps persistent and damped oscillators modestly but hurts PCC, neutral diffusion, and directional flow. In the easier known-class leave-one-family-out test, the added descriptors are essentially neutral (`+0.3%` MAE reduction beyond class+scale).
+
+**Current claim boundary:** increasingly rich handcrafted trajectory/response summaries have not produced a universal meta-rule for EBID usefulness. The next priority is to test a more direct mechanistic relationship between EBID and action-conditioned future regulatory difficulty within trajectories, rather than predicting aggregate EBID gain from summary descriptors.
+
+### Experiment 025 — direct EBID prediction of achievable control benefit
+
+Experiment 025 changes the target from "when does EBID help a predictor?" to the regulator quantity itself. Each prospective observation endpoint is rolled forward for 40 deterministic steps both uncontrolled and under the same optimistic 9-action/two-channel greedy oracle. The target is the relative reduction in future regulation error achievable by that controller.
+
+Against a strong baseline containing endpoint geometry, the matched quadratic trajectory family, and generic activity history, the full frozen canonical EBID feature family reduces leave-one-dynamical-class-out MAE by **28.8% pooled**. The gain is positive for all five unseen classes (roughly `+19.5%` to `+38.8%`), and the pooled EBID model reaches `R² ≈ 0.86`. Known-class leave-one-family-out transfer improves by **27.4%**.
+
+The crucial ablation is that initial/mean/endpoint entropy already accounts for **26.6%** pooled improvement. The remaining entropy-rate/deficit-rate features add only about **3.0%** beyond those entropy summaries, and only about `1.4%` for PCC. Thus the direct positive result is best interpreted as a transferable **entropy-history → control-benefit** relationship, not evidence that EBID rate terms uniquely encode regulator demand.

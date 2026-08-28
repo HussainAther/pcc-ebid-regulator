@@ -1,0 +1,8 @@
+EXPERIMENT 025: DIRECT EBID -> CONTROL BENEFIT
+pcc                      EBID MAE change=  +26.1% R2=+0.852 meanBenefit=0.566
+oscillatory_benchmark    EBID MAE change=  +19.5% R2=+0.678 meanBenefit=0.453
+damped_oscillator        EBID MAE change=  +31.7% R2=+0.709 meanBenefit=0.598
+directional_benchmark    EBID MAE change=  +38.8% R2=+0.626 meanBenefit=0.107
+neutral_diffusion        EBID MAE change=  +28.0% R2=+0.679 meanBenefit=0.707
+ALL                      EBID MAE change=  +28.8% R2=+0.863 meanBenefit=0.486
+Known-class family CV: {'protocol': 'leave_one_family_out_known_classes', 'n_test': 2400, 'class_geometry_mae': 0.09598066263177528, 'class_geometry_ebid_mae': 0.06968575299696854, 'ebid_relative_mae_reduction': 0.27396049280974194, 'class_geometry_r2': 0.7876367317419598, 'class_geometry_ebid_r2': 0.8920553757494406}

@@ -1,0 +1,7 @@
+LEAVE-ONE-DYNAMICAL-CLASS-OUT RESPONSE-INVARIANT TEST
+pcc                      response-vs-scale MAE change= -97.6% R2=-9.167
+oscillatory_benchmark    response-vs-scale MAE change= -88.4% R2=-3.152
+damped_oscillator        response-vs-scale MAE change=  +9.6% R2=-0.318
+directional_benchmark    response-vs-scale MAE change= -79.5% R2=-4.009
+neutral_diffusion        response-vs-scale MAE change= -42.9% R2=-1.885
+ALL                      response-vs-scale MAE change= -45.7% R2=-1.326

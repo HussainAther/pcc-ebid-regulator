@@ -303,3 +303,15 @@ A fully prospective five-class panel retains every raw observation trajectory an
 Experiment 023 asks whether the failure of raw path morphology in Experiment 022 can be repaired by measuring what the observed system *predicts and how it responds*. Using the same prospective five-class raw trajectories, it computes chronological one-step forecast error, innovation variance, predictability decay, standardized finite-difference Jacobian norms, perturbation amplification, and local response anisotropy. None of these explanatory descriptors uses entropy or EBID.
 
 The primary leave-one-dynamical-class-out test is negative: adding the response descriptors worsens MAE by about **45.7%** overall relative to observation scale alone (held-out-class R² ≈ `-1.33`). Even the secondary known-class / unseen-family test worsens by about **9%**. The current evidence therefore does not support a universal local-response rule for when EBID will add regulator-demand information. See `experiments/023_response_invariants/RESULTS.md`.
+
+
+### Experiment 024: finite-horizon controllability / response memory
+
+Standardized perturbations and intervention branches were propagated 5 and 20 steps forward on the prospective five-class panel. Multi-step memory amplification, response anisotropy, action-conditioned future spread, and persistence ratios **do not** provide a universal cross-class predictor of EBID regulator value: leave-one-class-out MAE worsens by 56.4% overall. In known classes with a new seed family, the added descriptors are essentially neutral (+0.3%). This extends the 021–023 boundary and motivates a direct EBID-to-controlled-future test rather than more handcrafted meta-descriptors.
+
+
+### Latest result — Experiment 025
+
+The project now tests EBID against a direct regulator quantity: the relative reduction in 40-step future error produced by a standardized optimistic controller. Across five leave-one-dynamical-class-out tests, the full frozen EBID feature family reduces MAE by **28.8% pooled** beyond endpoint geometry, matched quadratic trajectory features, and generic activity history; every held-out class improves.
+
+The key boundary is an ablation: initial/mean/end entropy account for most of the benefit (**26.6% pooled**), while the remaining canonical rate/deficit-rate terms add only about **3.0%** beyond those entropy summaries. The current positive claim is therefore about transferable **entropy history and achievable control benefit**, not a uniquely PCC-specific EBID-rate law.
