@@ -74,3 +74,23 @@
 4. Evaluate held-out R² / calibration and compare against the non-PCC control.
 5. Treat no incremental value as falsification pressure on H2 rather than
    redefining EBID post hoc.
+
+## Experiment 009 — canonical EBID incremental-value test — complete
+
+- [x] Freeze the parent manuscript's entropy-rate feature family before outcome analysis.
+- [x] Add the parent manuscript's matched quadratic-distance trajectory baseline.
+- [x] Control for nonlinear endpoint geometry, generic dynamic activity, phase, and known structure.
+- [x] Compare incremental held-out value in PCC and a matched non-PCC benchmark.
+- [x] Repeat the specificity comparison across 30 held-out fold assignments.
+- [x] Preserve the non-PCC gain and occasional negative specificity split in the claim boundary.
+
+## Recommended Experiment 010 — stochastic / out-of-distribution EBID replication
+
+1. Add matched stochastic process perturbations to PCC and non-PCC dynamics.
+2. Keep the Experiment 009 EBID feature definition completely frozen.
+3. Train/calibrate on one noise-strength range and evaluate on held-out noise
+   strengths and/or held-out topologies/regimes.
+4. Compare EBID against the same geometry, generic-activity, phase/structure,
+   and quadratic-trajectory controls.
+5. Treat failure to replicate the Experiment 009 specificity margin as direct
+   falsification pressure on H6.

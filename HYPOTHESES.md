@@ -91,3 +91,25 @@ if it disappears after tighter action-entropy/effective-outcome matching or unde
 stochastic perturbations. A PCC-specific claim now requires some additional PCC
 quantity (for example EBID, cycle phase, or topology-dependent prediction) to
 explain regulator demand beyond this non-PCC geometric baseline.
+
+## H6 — Canonical EBID adds regulator-demand information beyond local geometry
+
+**Hypothesis.** A frozen canonical EBID entropy-rate feature family adds
+held-out predictive information about future regulation difficulty after
+controlling for nonlinear endpoint geometry, generic vector-field activity,
+cycle phase / known structure, and a matched quadratic-distance trajectory
+baseline.
+
+**Experiment 009 evidence.** On the preregistered-style matched dataset,
+canonical EBID raises PCC cross-validated R² from about `0.717` to `0.792` after
+the quadratic trajectory control, an increment of about `+0.075`. The same
+feature family also helps the non-PCC benchmark (`+0.047`), so EBID is not a
+uniquely PCC observable. The PCC-minus-benchmark incremental margin is about
+`+0.028` in the fixed fold partition. Across 30 repeated 8-fold assignments,
+the median margin is about `+0.021` and is positive in `96.7%` of repeats
+(range approximately `-0.002` to `+0.044`).
+
+This is **provisional support** for H6 in the current deterministic toy system,
+not evidence of a universal PCC-specific law. The non-PCC gain and the one
+slightly negative repeated-CV margin both matter. Replication under stochastic
+perturbations, alternative horizons, and externally fixed datasets is required.

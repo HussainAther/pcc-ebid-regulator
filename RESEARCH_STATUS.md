@@ -221,3 +221,36 @@ The next decisive step is to implement the actual/canonical EBID statistic (if
 its definition is fixed in the parent PCC work) and test **incremental
 out-of-sample value over generic activity, phase, state geometry, and benchmark
 controls**.
+
+## Experiment 009 — canonical EBID incremental value
+
+Experiment 009 imports and freezes the canonical finite-time EBID feature family
+from the parent PCC/EBID manuscript: Shannon entropy `H(t)`, entropy deficit
+`D(t)=log(3)-H(t)`, and the stated early-window entropy/deficit rate features.
+It deliberately includes the parent's matched quadratic-distance trajectory
+baseline `Q(t)=||x(t)-x*||^2` because entropy deficit is locally quadratic near
+the symmetric equilibrium.
+
+The experiment observes 25 uncontrolled steps for 320 matched initial states,
+then predicts mean regulation error over a subsequent 50-step controlled
+horizon. Nested held-out models add nonlinear endpoint geometry, generic
+activity, phase/known structure, quadratic trajectory features, and finally
+canonical EBID.
+
+For PCC, adding the quadratic trajectory baseline to the geometry/activity/
+phase/structure model leaves CV R² near `0.717`; adding canonical EBID raises it
+to about `0.792` (`+0.075`). For the non-PCC benchmark the corresponding gain is
+about `+0.047`. The fixed-fold PCC specificity margin is therefore `+0.028`.
+Across 30 repeated 8-fold sample-level partitions, the median PCC-minus-
+benchmark margin is about `+0.021`, positive in `96.7%` of repeats, with a range
+of roughly `-0.002` to `+0.044`.
+
+This is the first experiment in this repo to show a reproducible *relative*
+advantage for the frozen EBID feature family after a conservative quadratic
+control. It remains provisional: EBID also improves the non-PCC benchmark, the
+specificity margin is modest, and one repeated partition is slightly negative.
+The next priority is an out-of-distribution / stochastic replication rather
+than further in-sample feature invention.
+
+Twenty-nine unit tests pass after adding the frozen EBID implementation and
+quadratic-baseline tests.

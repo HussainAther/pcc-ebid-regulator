@@ -195,3 +195,20 @@ EBID-adjacent interaction-activity signal improves PCC nonlinear-geometry
 prediction by about +0.052 CV R², but improves the non-PCC benchmark by about
 +0.118. The current activity proxy therefore **fails PCC specificity**. Cycle
 phase adds a smaller, non-decisive signal.
+
+### Experiment 009 — canonical EBID incremental value
+
+The actual parent-manuscript EBID feature family is now frozen in
+`src/pcc_ebid_regulator/ebid.py` and tested against a conservative matched
+quadratic-distance trajectory baseline. After nonlinear geometry, generic
+activity, phase/known structure, and quadratic trajectory controls, canonical
+EBID improves PCC held-out R² by about **+0.075**, versus about **+0.047** for the
+matched non-PCC benchmark. The fixed-fold PCC-minus-benchmark margin is about
+**+0.028 R²**; across 30 repeated fold assignments the median margin is about
+**+0.021** and positive in **96.7%** of repeats.
+
+This is provisional evidence that the frozen EBID trajectory features may carry
+some PCC-enriched regulator-demand information beyond generic simplex geometry,
+but the effect is not unique to PCC and is not yet established outside this
+deterministic toy setting. Experiment 010 is therefore a stochastic /
+out-of-distribution replication with the EBID definition kept fixed.
